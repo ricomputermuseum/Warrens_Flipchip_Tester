@@ -1,0 +1,170 @@
+﻿  SpiTestGuiForm.cpp
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(261): error C2146: syntax error: missing ';' before identifier 'FT_Open'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(264): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(267): error C2146: syntax error: missing ';' before identifier 'FT_OpenEx'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(271): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(274): error C2146: syntax error: missing ';' before identifier 'FT_ListDevices'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(278): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(281): error C2146: syntax error: missing ';' before identifier 'FT_Close'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(283): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(286): error C2146: syntax error: missing ';' before identifier 'FT_Read'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(291): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(294): error C2146: syntax error: missing ';' before identifier 'FT_Write'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(299): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(302): error C2146: syntax error: missing ';' before identifier 'FT_IoCtl'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(311): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(314): error C2146: syntax error: missing ';' before identifier 'FT_SetBaudRate'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(317): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(320): error C2146: syntax error: missing ';' before identifier 'FT_SetDivisor'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(323): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(326): error C2146: syntax error: missing ';' before identifier 'FT_SetDataCharacteristics'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(331): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(334): error C2146: syntax error: missing ';' before identifier 'FT_SetFlowControl'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(339): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(342): error C2146: syntax error: missing ';' before identifier 'FT_ResetDevice'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(344): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(347): error C2146: syntax error: missing ';' before identifier 'FT_SetDtr'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(349): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(352): error C2146: syntax error: missing ';' before identifier 'FT_ClrDtr'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(354): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(357): error C2146: syntax error: missing ';' before identifier 'FT_SetRts'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(359): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(362): error C2146: syntax error: missing ';' before identifier 'FT_ClrRts'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(364): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(367): error C2146: syntax error: missing ';' before identifier 'FT_GetModemStatus'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(370): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(373): error C2146: syntax error: missing ';' before identifier 'FT_SetChars'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(379): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(382): error C2146: syntax error: missing ';' before identifier 'FT_Purge'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(385): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(388): error C2146: syntax error: missing ';' before identifier 'FT_SetTimeouts'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(392): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(395): error C2146: syntax error: missing ';' before identifier 'FT_GetQueueStatus'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(398): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(401): error C2146: syntax error: missing ';' before identifier 'FT_SetEventNotification'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(405): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(408): error C2146: syntax error: missing ';' before identifier 'FT_GetStatus'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(413): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(416): error C2146: syntax error: missing ';' before identifier 'FT_SetBreakOn'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(418): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(421): error C2146: syntax error: missing ';' before identifier 'FT_SetBreakOff'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(423): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(426): error C2146: syntax error: missing ';' before identifier 'FT_SetWaitMask'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(429): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(432): error C2146: syntax error: missing ';' before identifier 'FT_WaitOnMask'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(435): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(438): error C2146: syntax error: missing ';' before identifier 'FT_GetEventStatus'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(441): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(444): error C2146: syntax error: missing ';' before identifier 'FT_ReadEE'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(448): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(451): error C2146: syntax error: missing ';' before identifier 'FT_WriteEE'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(455): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(458): error C2146: syntax error: missing ';' before identifier 'FT_EraseEE'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(460): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(626): error C2146: syntax error: missing ';' before identifier 'FT_EE_Program'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(629): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(632): error C2146: syntax error: missing ';' before identifier 'FT_EE_ProgramEx'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(639): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(642): error C2146: syntax error: missing ';' before identifier 'FT_EE_Read'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(645): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(648): error C2146: syntax error: missing ';' before identifier 'FT_EE_ReadEx'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(655): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(658): error C2146: syntax error: missing ';' before identifier 'FT_EE_UASize'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(661): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(664): error C2146: syntax error: missing ';' before identifier 'FT_EE_UAWrite'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(668): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(671): error C2146: syntax error: missing ';' before identifier 'FT_EE_UARead'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(676): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(679): error C2146: syntax error: missing ';' before identifier 'FT_SetLatencyTimer'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(682): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(685): error C2146: syntax error: missing ';' before identifier 'FT_GetLatencyTimer'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(688): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(691): error C2146: syntax error: missing ';' before identifier 'FT_SetBitMode'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(695): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(698): error C2146: syntax error: missing ';' before identifier 'FT_GetBitMode'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(701): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(704): error C2146: syntax error: missing ';' before identifier 'FT_SetUSBParameters'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(708): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(711): error C2146: syntax error: missing ';' before identifier 'FT_SetDeadmanTimeout'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(714): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(717): error C2146: syntax error: missing ';' before identifier 'FT_GetDeviceInfo'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(724): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(727): error C2146: syntax error: missing ';' before identifier 'FT_StopInTask'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(729): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(732): error C2146: syntax error: missing ';' before identifier 'FT_RestartInTask'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(734): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(737): error C2146: syntax error: missing ';' before identifier 'FT_SetResetPipeRetryCount'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(740): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(743): error C2146: syntax error: missing ';' before identifier 'FT_ResetPort'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(745): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(748): error C2146: syntax error: missing ';' before identifier 'FT_CyclePort'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(750): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(758): error C2040: 'WINAPI': 'FT_HANDLE' differs in levels of indirection from 'FT_STATUS'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(758): error C2146: syntax error: missing ';' before identifier 'FT_W32_CreateFile'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(759): error C2065: 'LPCTSTR': undeclared identifier
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(759): error C2146: syntax error: missing ')' before identifier 'lpszName'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(769): error C2146: syntax error: missing ';' before identifier 'FT_W32_CloseHandle'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(771): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(774): error C2146: syntax error: missing ';' before identifier 'FT_W32_ReadFile'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(780): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(783): error C2146: syntax error: missing ';' before identifier 'FT_W32_WriteFile'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(789): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(792): error C2146: syntax error: missing ';' before identifier 'FT_W32_GetLastError'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(794): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(797): error C2146: syntax error: missing ';' before identifier 'FT_W32_GetOverlappedResult'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(802): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(805): error C2146: syntax error: missing ';' before identifier 'FT_W32_CancelIo'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(807): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(867): error C2146: syntax error: missing ';' before identifier 'FT_W32_ClearCommBreak'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(869): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(872): error C2146: syntax error: missing ';' before identifier 'FT_W32_ClearCommError'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(876): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(879): error C2146: syntax error: missing ';' before identifier 'FT_W32_EscapeCommFunction'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(882): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(885): error C2146: syntax error: missing ';' before identifier 'FT_W32_GetCommModemStatus'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(888): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(891): error C2146: syntax error: missing ';' before identifier 'FT_W32_GetCommState'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(894): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(897): error C2146: syntax error: missing ';' before identifier 'FT_W32_GetCommTimeouts'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(900): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(903): error C2146: syntax error: missing ';' before identifier 'FT_W32_PurgeComm'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(906): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(909): error C2146: syntax error: missing ';' before identifier 'FT_W32_SetCommBreak'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(911): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(914): error C2146: syntax error: missing ';' before identifier 'FT_W32_SetCommMask'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(917): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(920): error C2146: syntax error: missing ';' before identifier 'FT_W32_GetCommMask'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(923): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(926): error C2146: syntax error: missing ';' before identifier 'FT_W32_SetCommState'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(929): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(932): error C2146: syntax error: missing ';' before identifier 'FT_W32_SetCommTimeouts'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(935): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(938): error C2146: syntax error: missing ';' before identifier 'FT_W32_SetupComm'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(942): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(945): error C2146: syntax error: missing ';' before identifier 'FT_W32_WaitCommEvent'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(949): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(974): error C2146: syntax error: missing ';' before identifier 'FT_CreateDeviceInfoList'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(976): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(979): error C2146: syntax error: missing ';' before identifier 'FT_GetDeviceInfoList'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(982): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(985): error C2146: syntax error: missing ';' before identifier 'FT_GetDeviceInfoDetail'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(994): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1002): error C2146: syntax error: missing ';' before identifier 'FT_GetDriverVersion'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1005): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1008): error C2146: syntax error: missing ';' before identifier 'FT_GetLibraryVersion'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1010): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1014): error C2146: syntax error: missing ';' before identifier 'FT_Rescan'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1016): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1019): error C2146: syntax error: missing ';' before identifier 'FT_Reload'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1022): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1025): error C2146: syntax error: missing ';' before identifier 'FT_GetComPortNumber'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1027): error C2061: syntax error: identifier 'LPLONG'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1028): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1036): error C2146: syntax error: missing ';' before identifier 'FT_EE_ReadConfig'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1040): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1043): error C2146: syntax error: missing ';' before identifier 'FT_EE_WriteConfig'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1047): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1050): error C2146: syntax error: missing ';' before identifier 'FT_EE_ReadECC'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1054): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1057): error C2146: syntax error: missing ';' before identifier 'FT_GetQueueStatusEx'
+e:\faq\dec\modules\warrens tester\warrens_flipchip_tester\spitestgui\ftd2xx.h(1060): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
