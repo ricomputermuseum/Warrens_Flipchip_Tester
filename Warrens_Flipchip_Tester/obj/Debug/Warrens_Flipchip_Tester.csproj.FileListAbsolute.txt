@@ -14,8 +14,6 @@ E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Teste
 E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.CopyComplete
 E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.exe
 E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.pdb
-D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.exe
-D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.pdb
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.exe.config
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.exe
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.pdb
@@ -30,3 +28,5 @@ D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchi
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.GenerateResource.cache
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.CoreCompileInputs.cache
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.CopyComplete
+D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.exe
+D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.pdb

@@ -3,9 +3,8 @@ E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\bin\De
 E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.csproj.CoreCompileInputs.cache
 E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.dll
 E:\FAQ\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.pdb
-D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.dll
-D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.pdb
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\bin\Debug\libMPSSEWrapper.dll
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\bin\Debug\libMPSSEWrapper.pdb
-D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.csprojAssemblyReference.cache
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.csproj.CoreCompileInputs.cache
+D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.dll
+D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\libMPSSEWrapper\obj\Debug\libMPSSEWrapper.pdb
