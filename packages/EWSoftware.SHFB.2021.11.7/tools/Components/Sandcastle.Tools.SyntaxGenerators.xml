@@ -1,0 +1,888 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sandcastle.Tools.SyntaxGenerators</name>
+    </assembly>
+    <members>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for ASP.NET
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.Initialize(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Initialize the syntax generator
+            </summary>
+            <param name="configuration">The syntax generator configuration</param>
+            <remarks>This component has no configurable elements</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.WriteSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.WebControlPrefix(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to get the web control prefix based on the given type
+            </summary>
+            <param name="reflection">An XPath navigator containing the type information</param>
+            <returns>The web control prefix or null if the type is not a web control</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter,System.String)">
+            <summary>
+            Write out class syntax
+            </summary>
+            <param name="reflection">An XPath navigator containing the member information</param>
+            <param name="writer">The syntax writer to which the information is written</param>
+            <param name="prefix">The web control prefix to use</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter,System.String)">
+            <summary>
+            Write out property syntax
+            </summary>
+            <param name="reflection">An XPath navigator containing the member information</param>
+            <param name="writer">The syntax writer to which the information is written</param>
+            <param name="prefix">The web control prefix to use</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.AspNetSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter,System.String)">
+            <summary>
+            Write out event syntax
+            </summary>
+            <param name="reflection">An XPath navigator containing the member information</param>
+            <param name="writer">The syntax writer to which the information is written</param>
+            <param name="prefix">The web control prefix to use</param>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for C#
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.CSharpDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for F#
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.FSharpDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator">
+            <summary>
+            This is a JavaScript declaration syntax generator that is used to add a JavaScript Syntax section to
+            each generated API topic.
+            </summary>
+            <remarks><para>This version differs from the <c>ScriptSharpDeclarationSyntaxGenerator</c> in that it
+            looks for a <c>&lt;scriptSharp /&gt;</c> element in the <c>&lt;api&gt;</c> node and, if found, only then
+            will it apply the casing rules to the member name.  If not present, no casing rules are applied to the
+            member names thus it is suitable for use with regular JavaScript such as that used in AjaxDoc projects.</para>
+            
+            <para>In order to use this script generator with Script# content, the Sandcastle reflection data file
+            must first be transformed using the Script# Reflection File Fixer plug-in so that the necessary changes
+            are made to it.</para>
+            </remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.HasAttribute(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            Check to see if the given attribute exists on the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="attributeName">The attribute for which to search</param>
+            <returns>True if found or false if not found</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.IsUnsupported(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Check to see if the element is unsupported
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The writer to which the "unsupported"
+            message is written.</param>
+            <returns>True if unsupported or false if it is supported</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.CreateCamelCaseName(System.String)">
+            <summary>
+            Convert the given name to camel case
+            </summary>
+            <param name="name ">The name to modify</param>
+            <returns>The name converted to camel case</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.ReadContainingTypeName(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Read the containing type name from the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <returns>The containing type name if found or null if not found</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.ReadFullContainingTypeName(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Read the full containing type name from the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <returns>The full containing type name prefixed with its namespace
+            or null if not found</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.ReadFullTypeName(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Read the full type name from the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <returns>The full type name prefixed with its namespace or null if
+            not found</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.ReadMemberName(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Read the member name from the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <returns>The member name</returns>
+            <remarks>If a <c>&lt;scriptSharp /&gt;</c> element exists in the
+            entry, the casing rule is applied to the member name.  If not
+            present, it is returned as-is.  The casing rule will convert the
+            name to camel case unless the member is marked with
+            <c>System.PreserveCaseAttribute</c>.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.ReadNamespaceName(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Read the namespace name from the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <returns>The namespace name</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.ReadTypeName(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Read the type name from the entry
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <returns>The type name</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteIndentedNewLine(Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write an indented new line
+            </summary>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteParameter(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out a parameter
+            </summary>
+            <param name="parameter">The parameter information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteParameterList(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out a parameter list
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteRecordConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out the record constructor syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteRecordSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out the record syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteAttachedEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Not used by this syntax generator
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteAttachedPropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out attached property syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out class syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out constructor syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out delegate syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out enumeration syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out event syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out field syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out interface syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out namespace syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out normal method syntax
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Operator syntax is unsupported
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Cast syntax is unsupported
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out property syntax if supported
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JavaScriptDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Structure syntax is unsupported
+            </summary>
+            <param name="reflection">The reflection information</param>
+            <param name="writer">The syntax writer to which it is written</param>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for JScript
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JScriptDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for J#
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.JSharpDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for Managed C++
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.ManagedCPlusPlusDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for Visual Basic
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteConstantValue(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicDeclarationSyntaxGenerator.WriteWithLineBreakIfNeededVB(Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter,System.String,System.String)">
+            <summary>
+            This is used to write a string followed by an optional line break if needed (the writer position is
+            past the maximum position afterwards).
+            </summary>
+            <param name="writer">The syntax writer to use</param>
+            <param name="text">An optional text string to write before the new line</param>
+            <param name="indent">An optional indent to write after the line break</param>
+            <returns>True if a new line was written, false if not</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator">
+            <summary>
+            This class generates usage syntax sections for Visual Basic
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.VisualBasicUsageSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator">
+            <summary>
+            This class generates usage syntax sections for XAML
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.ParseDocuments(System.String)">
+            <summary>
+            This is used to parse configuration files
+            </summary>
+            <param name="wildcardPath">The path used to find the configuration files</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteAttachedPropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteAttachedEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XamlUsageSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.XamlBoilerplateID">
+            <summary>
+            This enumerated type defines XAML boilerplate resource item IDs
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.XamlHeadingID">
+            <summary>
+            This enumerated type defines XAML heading resource item IDs
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator">
+            <summary>
+            This class generates declaration syntax sections for X#
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.Factory">
+            <summary>
+            This is used to create a new instance of the syntax generator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.Factory.ResourceItemFileLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteNamespaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteClassSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteStructureSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteInterfaceSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteDelegateSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteEnumerationSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteConstructorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteNormalMethodSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteNormalTypeReference(System.String,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <summary>
+            Write out a normal type reference
+            </summary>
+            <param name="api">The type reference to output</param>
+            <param name="writer">The syntax writer to which the type reference is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteOperatorSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteCastSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WritePropertySyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteEventSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteFieldSyntax(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.SyntaxGenerators.XSharpDeclarationSyntaxGenerator.WriteTypeReference(System.Xml.XPath.XPathNavigator,Sandcastle.Core.BuildAssembler.SyntaxGenerator.SyntaxWriter)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

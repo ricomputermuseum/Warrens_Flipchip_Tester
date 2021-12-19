@@ -1,0 +1,876 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SandcastleBuilder.PlugIns.UI</name>
+    </assembly>
+    <members>
+        <member name="T:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg">
+            <summary>
+            This form is used to edit the additional reference links plug-in configuration
+            </summary>
+            <summary>
+            AdditionalReferenceLinksConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.#ctor(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="project">The current project</param>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.lbReferences_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable controls based on whether or not there are references
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.btnAddReferenceProject_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add a new reference links project
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.btnDeleteReferenceProject_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected reference links project
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate and save the settings
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AdditionalReferenceLinksConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg">
+            <summary>
+            This form is used to configure the settings for the AjaxDoc plug-in
+            </summary>
+            <summary>
+            AjaxDocConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.chkUseDefaultCredentials_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the user name and password controls based on the Default Credentials check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.chkUseProxyServer_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the proxy server settings based on the Use Proxy Server check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.chkUseProxyDefCreds_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the proxy user credentials based on the Proxy Default Credentials check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.AjaxDocConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg">
+            <summary>
+            This form is used to configure the settings for the Bibliography Support plug-in
+            </summary>
+            <summary>
+            BibliographySupportConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.btnSelectLocation_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select the path to the bibliography file
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BibliographySupportConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg">
+            <summary>
+            This form is used to edit the assembly binding redirection resolver plug-in configuration
+            </summary>
+            <summary>
+            BindingRedirectResolverConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.#ctor(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="project">The current project</param>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.btnAddBindingRedirect_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add a new binding redirection
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.btnDeleteBindingRedirect_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected binding redirection
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.lbBindingRedirections_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable controls based on whether or not there are binding redirections
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.btnAddIgnoredName_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add an ignored assembly name
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.btnDeleteIgnoredName_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected ignored assembly names
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.lbIgnoreIfUnresolved_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable controls based on whether or not there are ignored assembly names
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.BindingRedirectResolverConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg">
+            <summary>
+            This form is used to configure the settings for the Completion Notification plug-in
+            </summary>
+            <summary>
+            CompletionNotificationConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.chkUseDefaultCredentials_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the user name and password controls based on the Default Credentials check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.CompletionNotificationConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg">
+            <summary>
+            This form is used to configure the settings for the DBCS Fix for CHM Builds plug-in
+            </summary>
+            <summary>
+            DbcsFixConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.btnSelectLocation_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select the path to the SBAppLocale tool
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DbcsFixConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg">
+            <summary>
+            This form is used to configure the settings for the Output Deployment plug-in
+            </summary>
+            <summary>
+            DeploymentConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The configuration to edit</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl">
+            <summary>
+            This user control is used to edit deployment configuration settings
+            </summary>
+            <summary>
+            DeploymentConfigUserControl
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.LoadFromSettings(SandcastleBuilder.PlugIns.DeploymentLocation)">
+            <summary>
+            Load the control values from the specified deployment location
+            settings object.
+            </summary>
+            <param name="location">The location settings</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.CreateDeploymentLocation">
+            <summary>
+            Validate the control values and, if valid, create and return a new
+            deployment location settings object.
+            </summary>
+            <returns>The deployment location settings if they are valid or
+            null if they are not valid.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.chkUseDefaultCredentials_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the user name and password controls based on the Default Credentials check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.chkUseProxyServer_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the proxy server settings based on the Use Proxy Server check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.chkUseProxyDefCreds_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable the proxy user credentials based on the Proxy Default Credentials check state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.DeploymentConfigUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg">
+            <summary>
+            This form is used to edit the member ID fix-up plug-in configuration
+            </summary>
+            <summary>
+            MemberIDFixUpPlugInConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The configuration to edit</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.lbExpressions_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable the controls based on the selection
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.btnAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add a new fix-up expression
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected fix-up expression
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.btnCppFixUps_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add the common C++ fix-up expressions
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.MemberIDFixUpPlugInConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg">
+            <summary>
+            This form is used to edit the version builder plug-in configuration
+            </summary>
+            <summary>
+            VersionBuilderConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.#ctor(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="project">The current project</param>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.lbVersionInfo_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable controls based on whether or not there are references
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.btnAddProject_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add a new version info project
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.btnDeleteProject_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected version info project
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate and save the settings
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.VersionBuilderConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg">
+            <summary>
+            This form is used to edit the wildcard references plug-in configuration
+            </summary>
+            <summary>
+            WildcardReferencesConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.#ctor(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="project">The current project</param>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.lbReferences_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable controls based on whether or not there are references
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.btnAddReferencePath_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add a new wildcard reference path
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.btnDeleteReferencePath_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected wildcard reference path
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate and save the settings
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.WildcardReferencesConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg">
+            <summary>
+            This form is used to edit the XPath reflection file filter plug-in settings
+            </summary>
+            <summary>
+            XPathReflectionFileFilterConfigDlg
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.Factory">
+            <summary>
+            This allows editing of the plug-in configuration
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.Factory.EditConfiguration(SandcastleBuilder.Utils.SandcastleProject,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.ExpressionItem">
+            <summary>
+            This is used to edit the expression
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.ExpressionItem.Expression">
+            <summary>
+            The XPath query expression
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.ExpressionItem.ErrorMessage">
+            <summary>
+            The error if the expression is not valid
+            </summary>
+        </member>
+        <member name="E:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.ExpressionItem.PropertyChanged">
+            <summary>
+            The property changed event
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.ExpressionItem.OnPropertyChanged(System.String)">
+            <summary>
+            This raises the <see cref="E:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.ExpressionItem.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The property name that changed</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The configuration to edit</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this plug-in
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.btnAdd_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Add a new XPath expression
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.btnDelete_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete the selected XPath expression
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.lbXPathQueries_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Enable or disable the controls based on the selection
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.UI.XPathReflectionFileFilterConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.AjaxDocPlugIn">
+            <summary>
+            This plug-in class is designed to generate XML comments and reflection file information for Atlas client
+            script libraries using AjaxDoc.
+            </summary>
+            <remarks>
+            <note type="caution"><strong>DEPRECATED:</strong> AjaxDoc is considered obsolete and has been replaced by
+            JsDoc.  In addition, this plug-in will only work on Windows using the full .NET Framework.</note>
+            
+            <note type="note">If you want the visibility settings and API filter applied, add the Manual
+            Visibility/API filter plug-in to the project as well.</note></remarks>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.AjaxDocPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+            <exception cref="T:SandcastleBuilder.Utils.BuilderException">This is thrown if the plug-in configuration is not valid</exception>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.RunBrowser">
+            <summary>
+            This is the entry point for the thread that runs the browser to invoke AjaxDoc
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.wb_DocumentCompleted(System.Object,System.Windows.Forms.WebBrowserDocumentCompletedEventArgs)">
+            <summary>
+            Hook up the error handler on completion to handle script errors
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.Window_Error(System.Object,System.Windows.Forms.HtmlElementErrorEventArgs)">
+            <summary>
+            If a script error occurs, stop processing
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AjaxDocPlugIn.wb_Navigated(System.Object,System.Windows.Forms.WebBrowserNavigatedEventArgs)">
+            <summary>
+            This notes when the page completes navigating
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+            <remarks>If ran successfully, the page navigates twice.  The first time is the initial page load.  It
+            immediately submits itself to post the results.  On the second navigation, we can assume it was
+            successful and the page contains the "success" result message.
+            </remarks>
+        </member>
+    </members>
+</doc>

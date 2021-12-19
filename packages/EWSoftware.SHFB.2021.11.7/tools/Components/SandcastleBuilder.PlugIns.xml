@@ -1,0 +1,1306 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SandcastleBuilder.PlugIns</name>
+    </assembly>
+    <members>
+        <member name="T:SandcastleBuilder.PlugIns.AdditionalContentOnlyPlugIn">
+            <summary>
+            This plug-in class can be used to build a help file consisting of nothing but additional content items.
+            It is also useful for proofreading your additional content without having to build all the API topics.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.AdditionalContentOnlyPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalContentOnlyPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalContentOnlyPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalContentOnlyPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn">
+            <summary>
+            This plug-in class is designed to add additional reference link targets to the <strong>Reflection Index
+            Data</strong> and <strong>Resolve Reference Links</strong> build components so that links can be created
+            to other third party help in a help collection or additional online content.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process.
+            </summary>
+            <param name="buildProcess">A reference to the current build process.</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize
+            itself.</param>
+            <exception cref="T:SandcastleBuilder.Utils.BuilderException">This is thrown if the plug-in configuration is not valid.</exception>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.MergeInheritedDocConfig">
+            <summary>
+            This is used to merge the reflection file names into the inherited documentation tool's configuration
+            file.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.MergeReflectionInfo(System.String)">
+            <summary>
+            This is used to merge the reflection file info into the named configuration file.
+            </summary>
+            <param name="configFilename">The configuration filename</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.BuildProject(SandcastleBuilder.Utils.SandcastleProject,System.String)">
+            <summary>
+            This is called to build a project
+            </summary>
+            <param name="project">The project to build</param>
+            <param name="workingPath">The working path for the project</param>
+            <returns>Returns true if successful, false if not</returns>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn.Report(SandcastleBuilder.Utils.BuildEngine.BuildProgressEventArgs)">
+            <summary>
+            This is called by the build process to report build progress for the reference link projects
+            </summary>
+            <param name="value">The event arguments</param>
+            <remarks>Since the build is synchronous in this plug-in, we need to implement the interface and
+            report progress synchronously as well or the final few messages can get lost and it looks like the
+            build failed.</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.BibliographySupportPlugIn">
+            <summary>
+            This plug-in class is used to add bibliography support to the topics
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BibliographySupportPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BibliographySupportPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BibliographySupportPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BibliographySupportPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.BindingRedirectResolverPlugIn">
+            <summary>
+            This plug-in class is used to add assembly binding redirection support to the MRefBuilder configuration
+            file.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectResolverPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectResolverPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectResolverPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectResolverPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.BindingRedirectSettings">
+            <summary>
+            This represents binding redirection settings for the <see cref="T:SandcastleBuilder.PlugIns.BindingRedirectResolverPlugIn"/>.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.AssemblyName">
+            <summary>
+            This is used to get or set the assembly name (no extension)
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.PublicKeyToken">
+            <summary>
+            This is used to get or set the public key token for the assembly
+            </summary>
+            <value>If omitted, "null" is assumed</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.Culture">
+            <summary>
+            This is used to get or set the culture for the assembly
+            </summary>
+            <value>If omitted, "neutral" is assumed</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.OldVersion">
+            <summary>
+            This is used to get or set the old version number to redirect to the new version number
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.OldVersionTo">
+            <summary>
+            This is used to get or set the ending old version number range to redirect to the new version
+            number.
+            </summary>
+            <value>If not set, only <see cref="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.OldVersion" /> will be used to redirect a single
+            version.</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.NewVersion">
+            <summary>
+            This is used to get or set the new version number to which the old versions are redirected
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.ConfigurationFile">
+            <summary>
+            This is used to get or set the path to the configuration file from which the settings should be
+            imported.
+            </summary>
+            <value>If specified, the properties in the Binding Redirect category are ignored.</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.ErrorMessage">
+            <summary>
+            This read-only property returns an error message describing any issues with the settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.BindingRedirectSettings.BindingRedirectDescription">
+            <summary>
+            This read-only property returns a description of the settings
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectSettings.#ctor(SandcastleBuilder.Utils.IBasePathProvider)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="provider">The base path provider</param>
+        </member>
+        <member name="E:SandcastleBuilder.PlugIns.BindingRedirectSettings.PropertyChanged">
+            <summary>
+            The property changed event
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectSettings.OnPropertyChanged(System.String)">
+            <summary>
+            This raises the <see cref="E:SandcastleBuilder.PlugIns.BindingRedirectSettings.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The property name that changed</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectSettings.configFile_PersistablePathChanged(System.Object,System.EventArgs)">
+            <summary>
+            Update the display description when the configuration file changes
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectSettings.Validate">
+            <summary>
+            This is used to validate the settings
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectSettings.FromXml(SandcastleBuilder.Utils.IBasePathProvider,System.Xml.Linq.XElement)">
+            <summary>
+            Create a binding redirect settings instance from an XML element containing the settings
+            </summary>
+            <param name="pathProvider">The base path provider object</param>
+            <param name="configuration">The XML element from which to obtain the settings</param>
+            <returns>A <see cref="T:SandcastleBuilder.PlugIns.BindingRedirectSettings"/> object containing the settings from the XPath
+            navigator.</returns>
+            <remarks>It should contain an element called <c>dependentAssembly</c> with a <c>configFile</c>
+            attribute or a nested <c>assemblyIdentity</c> and <c>bindingRedirect</c> element that define
+            the settings.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.BindingRedirectSettings.ToXml(System.Boolean)">
+            <summary>
+            Store the binding redirect settings in an XML element
+            </summary>
+            <param name="relativePath">True to allow a relative path on <c>importFrom</c> attributes, false to
+            fully qualify the path.</param>
+            <returns>Returns the XML element</returns>
+            <remarks>The settings are stored in an element called <c>dependentAssembly</c>.</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.CompletionNotificationPlugIn">
+            <summary>
+            This plug-in class is designed to run after the build completes to send notification of the completion
+            status via e-mail.  The log file can be sent as an attachment.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.CompletionNotificationPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.CompletionNotificationPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+            <exception cref="T:SandcastleBuilder.Utils.BuilderException">This is thrown if the plug-in configuration is not valid</exception>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.CompletionNotificationPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+            <remarks>Since this runs after completion of the build and the log file is closed, any progress
+            messages reported here will not appear in it, just in the output window on the main form.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.CompletionNotificationPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.CompletionNotificationPlugIn.TransformLogFile">
+            <summary>
+            This is used to run the log file through an XSL transform so that it is more readable
+            </summary>
+            <returns>The transformed log filename</returns>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.DbcsFixPlugIn">
+            <summary>
+            This plug-in class is designed to modify the HTML files and alter the build so as to overcome the
+            encoding issues encountered when building HTML Help 1 (.chm) files for various foreign languages.
+            </summary>
+            <remarks>This uses the <see href="http://www.steelbytes.com/?mid=45">Steel Bytes SBAppLocale</see> tool
+            to run the HTML Help 1 compiler using the correct locale.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DbcsFixPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DbcsFixPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DbcsFixPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DbcsFixPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.DeploymentLocation">
+            <summary>
+            This represents a deployment location
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DeploymentLocation.Location">
+            <summary>
+            The location to which the help file is deployed
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DeploymentLocation.UserCredentials">
+            <summary>
+            The user credentials for the location
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DeploymentLocation.ProxyCredentials">
+            <summary>
+            The proxy credentials for the location
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentLocation.#ctor">
+            <summary>
+            Constructor
+            </summary>
+            <overloads>There are two overloads for the constructor</overloads>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentLocation.#ctor(System.Uri,SandcastleBuilder.Utils.BuildComponent.UserCredentials,SandcastleBuilder.Utils.BuildComponent.ProxyCredentials)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="deployTo">The deployment location</param>
+            <param name="user">The user credentials, if any</param>
+            <param name="proxy">The proxy credentials, if any</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentLocation.FromXml(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Create a deployment location instance from an XML element containing the settings
+            </summary>
+            <param name="configuration">The XML element from which to obtain the settings</param>
+            <param name="id">The id of the element to load</param>
+            <returns>A <see cref="T:SandcastleBuilder.PlugIns.DeploymentLocation"/> object containing the settings from the XPath navigator.</returns>
+            <remarks>It should contain an element called <b>deploymentLocation</b> with two attributes (<b>id</b>
+            with the specified ID value and <b>location</b>) and nested <b>userCredentials</b> and
+            <b>proxyCredentials</b> elements.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentLocation.ToXml(System.String)">
+            <summary>
+            Return the deployment location as an XML element
+            </summary>
+            <param name="id">The id of the element to create</param>
+            <returns>The deployment location settings as an XML element</returns>
+            <remarks>The deployment location is stored in an element called <strong>deploymentLocation</strong>
+            with two attributes (<strong>id</strong> matching the specified id and <strong>location</strong>) and
+            nested <strong>userCredentials</strong> and <strong>proxyCredentials</strong> elements.</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.DeploymentPlugIn">
+            <summary>
+            This plug-in class is used to copy the resulting help file output to a location other than the output
+            folder (i.e. a file share, an FTP site, a web server, etc.).
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DeploymentPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+            <exception cref="T:SandcastleBuilder.Utils.BuilderException">This is thrown if the plug-in configuration is not valid</exception>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentPlugIn.DeployOutput(System.Collections.ObjectModel.Collection{System.String},SandcastleBuilder.PlugIns.DeploymentLocation)">
+            <summary>
+            Deploy the given list of files to the specified location
+            </summary>
+            <param name="files">The list of files to deploy</param>
+            <param name="location">The deployment location</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DeploymentPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn">
+            <summary>
+            This plug-in is used to automatically generate an API filter based on the XML comments member IDs to
+            limit the help file content to only the documented entities.
+            </summary>
+            <remarks><para>This plug-in is unique in that it runs both before and after the <c>GenerateReflectionInfo</c>
+            step.  This is necessary as we must remove any project-based API filter and generate a full set of API
+            information in order to compare it to the XML comments member IDs.  Once we have done that, we can
+            generate an API filter and apply it by building the reflection information again.</para>
+            
+            <para>Note that we are still constrained by the rules of the API filter.  Specifically, if you exclude
+            one member of an overloaded method set, all of them will be excluded.  There is no getting around that
+            rule.</para>
+            
+            <para>In addition, since inherited documentation is generated after reflection data is generated,
+            undocumented members of explicitly implemented interfaces will not be included.  If you want them
+            included, you must explicitly add an <c>inheritdoc</c> tag on those members.</para>
+            
+            <para>To explicitly exclude a documented member, add the <c>exclude</c> XML comment tag to its
+            comments.  If placed on a type, it will exclude the entire type regardless of whether or not it has
+            documented members.  If placed on a <c>NamespaceDoc</c> class, it will exclude all types within the
+            namespace regardless of whether or not they are documented.  Note that namespace exclusions defined in
+            the project namespace summaries will have no effect.  You must either add a <c>NamespaceDoc</c> class for
+            the excluded namespace or exclude all of its types.</para></remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState">
+            <summary>
+            This is used to store the documentation state for the members
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.MemberId">
+            <summary>
+            This is used to get or set the full member ID (type:namespace[.type[.member]]).
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.IdType">
+            <summary>
+            This returns the member ID type (N = Namespace, T = Type, anything else = member)
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.NamespaceName">
+            <summary>
+            This is used to get or set the namespace name
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.FullTypeName">
+            <summary>
+            This is used to get the full type name including the namespace
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.TypeName">
+            <summary>
+            This is used to get or set the type name if for types and their members
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.MemberName">
+            <summary>
+            This is used to get or set the member name for type members
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.IsAutoDocumented">
+            <summary>
+            This is used to get or set whether or not the member is an auto-documented constructor or dispose
+            method.
+            </summary>
+            <value>If true and no other members are documented, the type containing the auto-documented
+            constructors and dispose methods will be excluded unless the related auto-document options are
+            enabled.</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.IsDocumented">
+            <summary>
+            This is used to get or set the documented state
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.IsExplicitlyExcluded">
+            <summary>
+            This is used to get whether or not the member is explicitly excluded via an <c>exclude</c>
+            XML comments tag.
+            </summary>
+            <remarks>Namespaces that are explicitly excluded will exclude all of their contained types even
+            if they are documented.  Types that are explicitly excluded will exclude all of their members
+            even if they are documented.  If not explicitly included, the types/members will be included if
+            documented even if their parent namespace/type is not documented.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.Members">
+            <summary>
+            This returns the documentation state of the members for namespaces and types
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.DocumentationState.FromApiMember(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to get the member information from a reflection information file node
+            </summary>
+            <param name="member">The reflection information file node from which to obtain the details</param>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.Finalize">
+            <summary>
+            This handles garbage collection to ensure proper disposal of the plug-in if not done explicitly
+            with <see cref="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.Dispose"/>.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.DocumentedEntitiesOnlyPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.IntelliSenseOnlyPlugIn">
+            <summary>
+            This plug-in class can be used to build an IntelliSense XML comments file without a related help file
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.IntelliSenseOnlyPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.IntelliSenseOnlyPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.IntelliSenseOnlyPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.IntelliSenseOnlyPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn">
+            <summary>
+            This plug-in class is used to add elements for the lightweight website style such as a search box and a
+            table of contents in the topics similar to the MSDN lightweight style.
+            </summary>
+            <remarks>This is a presentation style dependency plug-in and has no configurable elements.  As such, it
+            is hidden.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.ExecutionPoints">
+            <inheritdoc/>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.GenerateTocRoot(System.Boolean)">
+            <summary>
+            Generate the root TOC node
+            </summary>
+            <param name="expanded">True if expanded false if not</param>
+            <returns>The root TOC node</returns>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.GenerateTocAncestor(System.Xml.Linq.XElement,System.Int32,System.Boolean)">
+            <summary>
+            Generate a TOC ancestor node
+            </summary>
+            <param name="ancestor">The TOC ancestor</param>
+            <param name="level">The level of the node</param>
+            <param name="expanded">True if expanded, false if not</param>
+            <returns>The TOC ancestor node</returns>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.GenerateTocSibling(System.Xml.Linq.XElement,System.Xml.Linq.XElement,System.Int32,System.Boolean)">
+            <summary>
+            Generate a TOC sibling node
+            </summary>
+            <param name="current">The current node</param>
+            <param name="sibling">The sibling node</param>
+            <param name="level">The level of the node</param>
+            <param name="showSiblings">True to show siblings, false to keep them hidden</param>
+            <returns>The TOC sibling node</returns>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.LightweightWebsiteStylePlugIn.GenerateTocChild(System.Xml.Linq.XElement)">
+            <summary>
+            Generate a TOC child node
+            </summary>
+            <param name="child">The child node</param>
+            <returns>The TOC child node</returns>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn">
+            <summary>
+            This plug-in class can be used to manually apply the visibility settings and API filter from the project
+            to the reflection data file.
+            </summary>
+            <remarks><note type="note">This is only necessary if the Generate Reflection Information build step is
+            suppressed or replaced by some other means.  In such cases, the visibility settings and API filter are
+            not applied unless this plug-in is used.  If the reflection information file is produced by
+            <strong>MRefBuilder.exe</strong>, there is no need to use this plug-in as it will apply the visibility
+            settings and API filter automatically to the file that it produces.</note></remarks>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.ApplyVisibilityProperties(System.String)">
+            <summary>
+            Apply the project's Visibility category properties to the given reflection information file
+            </summary>
+            <param name="reflectionInfoFile">The name of the reflection information file to use</param>
+            <remarks>This is used to remove entries from the reflection information file so that it does not
+            appear in the help file.  See the <c>Document*</c> properties in the <see cref="T:SandcastleBuilder.Utils.SandcastleProject"/>
+            class for information on the items removed.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveAttributes(System.Xml.XmlNode)">
+            <summary>
+            Remove attribute information
+            </summary>
+            <param name="apisRoot">The root APIs node</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveExplicitInterfaceImplementations(System.Xml.XmlNode)">
+            <summary>
+            Remove explicit interface implementation information
+            </summary>
+            <param name="apisRoot">The root APIs node</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveInheritedMembers(System.Xml.XmlNode)">
+            <summary>
+            Remove inherited member information from each type's element list based on the project settings
+            </summary>
+            <param name="apisRoot">The root APIs node</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveMembers(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            Remove member information matching the specified XPath query.
+            </summary>
+            <param name="apisRoot">The root APIs node</param>
+            <param name="xpath">The XPath query used to find the members.</param>
+            <param name="memberDesc">A description of the members removed.</param>
+            <returns>The number of members to be removed</returns>
+            <remarks>Actual removal of the members is deferred.  On very large files, the XPath queries took too
+            long when removing the &lt;element&gt; members.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.ModifyProtectedInternalVisibility(System.Xml.XmlNode)">
+            <summary>
+            Change the visibility of "protected internal" members to
+            "protected".
+            </summary>
+            <param name="apisRoot">The root APIs node</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveSealedProtected(System.Xml.XmlNode)">
+            <summary>
+            Remove protected members from sealed classes.
+            </summary>
+            <param name="apisRoot">The root APIs node</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.OnExcludeElement(System.Text.RegularExpressions.Match)">
+            <summary>
+            This is used as the match evaluator for the regular expression that finds the &lt;element&gt; entries
+            to remove from the reflection information file.
+            </summary>
+            <param name="m">The match found</param>
+            <returns>The string with which to replace the match</returns>
+            <remarks>The removals are done this way as it proved to be a very slow process to remove the child
+            elements at the time they were found with an XPath query on very large files.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.ApplyManualApiFilter(SandcastleBuilder.Utils.ApiFilterCollection,System.String)">
+            <summary>
+            This is used to manually apply the specified API filter to the specified reflection information file
+            </summary>
+            <param name="filterToApply">The API filter to apply</param>
+            <param name="reflectionFilename">The reflection information file</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.ApplyMemberFilter(System.Xml.XmlNode,SandcastleBuilder.Utils.ApiFilter)">
+            <summary>
+            Apply a member filter to the specified type.
+            </summary>
+            <param name="apis">The APIs node from which to remove info</param>
+            <param name="typeFilter">The type filter to be processed</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveNamespace(System.Xml.XmlNode,System.String)">
+            <summary>
+            Remove an entire namespace and all of its members
+            </summary>
+            <param name="apis">The APIs node from which to remove info</param>
+            <param name="id">The namespace ID to remove</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ManualVisibilityApiFilterPlugIn.RemoveType(System.Xml.XmlNode,System.String)">
+            <summary>
+            Remove an entire type and all of its members
+            </summary>
+            <param name="apis">The APIs node from which to remove info</param>
+            <param name="id">The type ID to remove</param>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.MemberIdFixUpPlugIn">
+            <summary>
+            This plug-in class is used to fix up member IDs in the XML comments files due to quirks in the various
+            compilers that cause a mismatch between the member IDs in the XML comments and the reflection data.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.MemberIdFixUpPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.MemberIdFixUpPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.MemberIdFixUpPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.MemberIdFixUpPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.MemberIdMatchExpression">
+            <summary>
+            This is used to hold the member ID match expression settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.MemberIdMatchExpression.MatchExpression">
+            <summary>
+            The member ID expression to match
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.MemberIdMatchExpression.ReplacementValue">
+            <summary>
+            The replacement member ID value
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.MemberIdMatchExpression.MatchAsRegEx">
+            <summary>
+            Match and replace the member ID using a regular expression
+            </summary>
+            <value>True to match and replace as a regular expression, false to use literal match and replace</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.MemberIdMatchExpression.ErrorMessage">
+            <summary>
+            This read-only property returns an error message describing any issues with the settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.MemberIdMatchExpression.RegularExpression">
+            <summary>
+            This read-only property returns a <see cref="T:System.Text.RegularExpressions.Regex"/> for the expression if it should be matched as a
+            regular expression or null if not.
+            </summary>
+            <remarks>The regular expression is cached for future use</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.MemberIdMatchExpression.Validate">
+            <summary>
+            This is used to validate the settings
+            </summary>
+        </member>
+        <member name="E:SandcastleBuilder.PlugIns.MemberIdMatchExpression.PropertyChanged">
+            <summary>
+            The property changed event
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.MemberIdMatchExpression.OnPropertyChanged(System.String)">
+            <summary>
+            This raises the <see cref="E:SandcastleBuilder.PlugIns.MemberIdMatchExpression.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The property name that changed</param>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.ReferenceLinkSettings">
+            <summary>
+            This represents reference link settings for the <see cref="T:SandcastleBuilder.PlugIns.AdditionalReferenceLinksPlugIn"/>
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.ReflectionFilename">
+            <summary>
+            This is used to get or set the location of the reflection file at build time
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.HtmlSdkLinkType">
+            <summary>
+            This is used to get or set the HTML Help 1 SDK link type for the target
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.MSHelpViewerSdkLinkType">
+            <summary>
+            This is used to get or set the MS Help Viewer SDK link type for the target
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.WebsiteSdkLinkType">
+            <summary>
+            This is used to get or set the website SDK link type for the target
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.HelpFileProject">
+            <summary>
+            This is used to get or set the path to the help file builder project used to generate reference link
+            information.
+            </summary>
+            <value>The help file builder project makes it simple to manage settings for the other target's
+            assemblies such as references, API filter settings, etc.</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.ErrorMessage">
+            <summary>
+            This read-only property returns an error message describing any issues with the settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ReferenceLinkSettings.ReferenceLinkDescription">
+            <summary>
+            This read-only property returns a description of the settings
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ReferenceLinkSettings.#ctor(SandcastleBuilder.Utils.IBasePathProvider)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="provider">The base path provider</param>
+        </member>
+        <member name="E:SandcastleBuilder.PlugIns.ReferenceLinkSettings.PropertyChanged">
+            <summary>
+            The property changed event
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ReferenceLinkSettings.OnPropertyChanged(System.String)">
+            <summary>
+            This raises the <see cref="E:SandcastleBuilder.PlugIns.ReferenceLinkSettings.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The property name that changed</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ReferenceLinkSettings.helpFileProject_PersistablePathChanged(System.Object,System.EventArgs)">
+            <summary>
+            Update the display description when the help file project changes
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ReferenceLinkSettings.Validate">
+            <summary>
+            This is used to validate the settings
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ReferenceLinkSettings.FromXml(SandcastleBuilder.Utils.IBasePathProvider,System.Xml.Linq.XElement)">
+            <summary>
+            Create a reference link settings instance from an XML element containing the settings
+            </summary>
+            <param name="pathProvider">The base path provider object</param>
+            <param name="configuration">The XML element from which to obtain the settings.</param>
+            <returns>A <see cref="T:SandcastleBuilder.PlugIns.ReferenceLinkSettings"/> object containing the settings from the XML element</returns>
+            <remarks>It should contain an element called <c>target</c> with two attributes (<c>linkType</c> and
+            <c>helpFileProject</c>).</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ReferenceLinkSettings.ToXml">
+            <summary>
+            Store the reference link settings as an XML element
+            </summary>
+            <returns>Returns the XML element containing the settings</returns>
+            <remarks>The reference link settings are stored in an element called <c>target</c> with attributes
+            for each of the link types and the project name (<c>htmlSdkLinkType</c>, <c>helpViewerSdkLinkType</c>,
+            <c>websiteSdkLinkType</c>, and <c>helpFileProject</c>).</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.ScriptSharpPlugIn">
+            <summary>
+            This plug-in class is designed to modify the reflection information file produced after running
+            MRefBuilder on assemblies produced by the Script# compiler so that it is suitable for use in
+            producing a help file.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.ScriptSharpPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ScriptSharpPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ScriptSharpPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ScriptSharpPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ScriptSharpPlugIn.ModifyMRefBuilderConfig">
+            <summary>
+            This is used to modify the MRefBuilder.config file for use with Script#
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.ScriptSharpPlugIn.FixScriptSharpReflectionData">
+            <summary>
+            This is used to fix up the Script# elements in the reflection.org file
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.TocExcludePlugIn">
+            <summary>
+            This plug-in class can be used to exclude API members from the table of contents via the
+            <c>&lt;tocexclude /&gt;</c> XML comment tag.  The excluded items are still accessible in the help file
+            via other topic links.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.TocExcludePlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.TocExcludePlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.TocExcludePlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.TocExcludePlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.VersionBuilderPlugIn">
+            <summary>
+            This plug-in class is designed to generate version information for assemblies in the current project and
+            others related to the same product that can be merged into the current project's help file topics.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+            <exception cref="T:SandcastleBuilder.Utils.BuilderException">This is thrown if the plug-in configuration is not valid</exception>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.UpdateVersionItems">
+            <summary>
+            Update the version information items in the shared builder content file
+            </summary>
+            <remarks>Remove the standard version information items from the shared content file as the version
+            builder information will take its place in the topics.  New items are added for each version of the
+            project defined in the configuration settings.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.BuildProject(SandcastleBuilder.Utils.SandcastleProject,System.String)">
+            <summary>
+            This is called to build a project
+            </summary>
+            <param name="project">The project to build</param>
+            <param name="workingPath">The working path for the project</param>
+            <returns>Returns true if successful, false if not</returns>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.CreateVersionBuilderConfigurationFile">
+            <summary>
+            This creates the Version Builder configuration file
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.Report(SandcastleBuilder.Utils.BuildEngine.BuildProgressEventArgs)">
+            <summary>
+            This is called by the build process to report build progress for the reference link projects
+            </summary>
+            <param name="value">The event arguments</param>
+            <remarks>Since the build is synchronous in this plug-in, we need to implement the interface and
+            report progress synchronously as well or the final few messages can get lost and it looks like the
+            build failed.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionBuilderPlugIn.GenerateVersionInformation">
+            <summary>
+            Generate the version information
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.VersionSettings">
+            <summary>
+            This represents version settings for the <see cref="T:SandcastleBuilder.PlugIns.VersionBuilderPlugIn"/>.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.ReflectionFilename">
+            <summary>
+            This is used to get or set the location of the reflection file at build time
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.FrameworkLabel">
+            <summary>
+            This is used to get or set the framework label for the related
+            project.
+            </summary>
+            <remarks>This is used to group like versions of projects.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.Version">
+            <summary>
+            This is used to get or set the version number description for the related project
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.HelpFileProject">
+            <summary>
+            This is used to get or set the path to the help file builder project used to generate version
+            information.
+            </summary>
+            <value>The help file builder project makes it simple to manage settings for the prior version's
+            assemblies such as references, API filter settings, etc.</value>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.ErrorMessage">
+            <summary>
+            This read-only property returns an error message describing any issues with the settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.VersionInfoDescription">
+            <summary>
+            This read-only property returns a description of the settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.VersionSettings.UniqueId">
+            <summary>
+            This read-only property returns a unique ID for the item
+            </summary>
+            <value>Returns a hash code of the framework label and version.  This is used rather than overriding
+            <see cref="M:System.Object.GetHashCode"/> as the WPF list box relies on an immutable hash value to track
+            elements.  Editing the framework and version values in an existing instance caused it to throw
+            duplicate key errors.</value>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionSettings.#ctor(SandcastleBuilder.Utils.IBasePathProvider)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="provider">The base path provider for the help file project property</param>
+        </member>
+        <member name="E:SandcastleBuilder.PlugIns.VersionSettings.PropertyChanged">
+            <summary>
+            The property changed event
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionSettings.OnPropertyChanged(System.String)">
+            <summary>
+            This raises the <see cref="E:SandcastleBuilder.PlugIns.VersionSettings.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The property name that changed</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionSettings.helpFileProject_PersistablePathChanged(System.Object,System.EventArgs)">
+            <summary>
+            Update the display description when the help file project changes
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionSettings.Validate">
+            <summary>
+            This is used to validate the settings
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionSettings.FromXml(SandcastleBuilder.Utils.IBasePathProvider,System.Xml.Linq.XElement)">
+            <summary>
+            Create a version settings instance from an XML element containing the settings
+            </summary>
+            <param name="pathProvider">The base path provider object</param>
+            <param name="configuration">The XML element from which to obtain the settings</param>
+            <returns>A <see cref="T:SandcastleBuilder.PlugIns.VersionSettings"/> object containing the settings from the XML element</returns>
+            <remarks>It should contain an element called <c>version</c> with three attributes (<c>label</c>,
+            <c>version</c> and <c>helpFileProject</c>).</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.VersionSettings.ToXml">
+            <summary>
+            Store the version settings in an XML element
+            </summary>
+            <returns>Returns the settings in an XML element</returns>
+            <remarks>The version settings are stored in an element called <c>version</c> with three attributes
+            (<c>label</c>, <c>version</c> and <c>helpFileProject</c>).</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.WildcardReferenceSettings">
+            <summary>
+            This represents wildcard reference settings for the
+            <see cref="T:SandcastleBuilder.PlugIns.WildcardReferencesPlugIn"/>.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.WildcardReferenceSettings.ReferencePath">
+            <summary>
+            This is used to get or set the path to scan for references.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.WildcardReferenceSettings.Wildcard">
+            <summary>
+            This is used to get or set the wildcard to use with the folder
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.WildcardReferenceSettings.Recursive">
+            <summary>
+            This is used to get or set whether or not to scan sub-folders recursively
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.WildcardReferenceSettings.ErrorMessage">
+            <summary>
+            This read-only property returns an error message describing any issues with the settings
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.WildcardReferenceSettings.ReferenceDescription">
+            <summary>
+            This returns a description of the entry suitable for display in a bound list control
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferenceSettings.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="E:SandcastleBuilder.PlugIns.WildcardReferenceSettings.PropertyChanged">
+            <summary>
+            The property changed event
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferenceSettings.OnPropertyChanged(System.String)">
+            <summary>
+            This raises the <see cref="E:SandcastleBuilder.PlugIns.WildcardReferenceSettings.PropertyChanged"/> event
+            </summary>
+            <param name="propertyName">The property name that changed</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferenceSettings.referencePath_PersistablePathChanged(System.Object,System.EventArgs)">
+            <summary>
+            Update the display description when the reference path changes
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferenceSettings.Validate">
+            <summary>
+            This is used to validate the settings
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferenceSettings.FromXml(SandcastleBuilder.Utils.IBasePathProvider,System.Xml.Linq.XElement)">
+            <summary>
+            Create a wildcard reference settings instance from an XElement containing the settings
+            </summary>
+            <param name="pathProvider">The base path provider object</param>
+            <param name="element">The XElement from which to obtain the settings</param>
+            <returns>A <see cref="T:SandcastleBuilder.PlugIns.WildcardReferenceSettings"/> object containing the settings from the XElement</returns>
+            <remarks>It should contain an element called <c>reference</c> with three attributes (<c>path</c>,
+            <c>wildcard</c>, and <c>recurse</c>).
+            </remarks>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferenceSettings.ToXml">
+            <summary>
+            Store the wildcard reference settings as a node in the given XML element
+            </summary>
+            <returns>Returns the node to add</returns>
+            <remarks>The reference link settings are stored in an element called <c>reference</c> with three
+            attributes (<c>path</c>, <c>wildcard</c>, and <c>recurse</c>).</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.WildcardReferencesPlugIn">
+            <summary>
+            This plug-in class is designed to modify the MRefBuilder project file by adding in reference assemblies
+            matching wildcard search paths.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.WildcardReferencesPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferencesPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferencesPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.WildcardReferencesPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.PlugIns.XPathReflectionFileFilterPlugIn">
+            <summary>
+            This plug-in class is used to filter out unwanted information from the reflection information file using
+            XPath queries.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.PlugIns.XPathReflectionFileFilterPlugIn.ExecutionPoints">
+            <summary>
+            This read-only property returns a collection of execution points that define when the plug-in should
+            be invoked during the build process.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.XPathReflectionFileFilterPlugIn.Initialize(SandcastleBuilder.Utils.BuildEngine.BuildProcess,System.Xml.Linq.XElement)">
+            <summary>
+            This method is used to initialize the plug-in at the start of the build process
+            </summary>
+            <param name="buildProcess">A reference to the current build process</param>
+            <param name="configuration">The configuration data that the plug-in should use to initialize itself</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.XPathReflectionFileFilterPlugIn.Execute(SandcastleBuilder.Utils.BuildComponent.ExecutionContext)">
+            <summary>
+            This method is used to execute the plug-in during the build process
+            </summary>
+            <param name="context">The current execution context</param>
+        </member>
+        <member name="M:SandcastleBuilder.PlugIns.XPathReflectionFileFilterPlugIn.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the plug-in object
+            </summary>
+        </member>
+    </members>
+</doc>

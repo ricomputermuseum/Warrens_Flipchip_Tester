@@ -30,3 +30,19 @@ D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchi
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.CopyComplete
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.exe
 D:\MGT Files\Laptop\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.pdb
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.exe.config
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.exe
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.pdb
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.exe.CodeAnalysisLog.xml
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\Warrens_Flipchip_Tester.exe.lastcodeanalysissucceeded
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\libMPSSEWrapper.dll
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\libMPSSEWrapper.pdb
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csprojAssemblyReference.cache
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.Flipchip_Tester_Form.resources
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.Properties.Resources.resources
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.GenerateResource.cache
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.CoreCompileInputs.cache
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.csproj.CopyComplete
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.exe
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\obj\Debug\Warrens_Flipchip_Tester.pdb
+E:\FAQ\SynologyDrive\DEC\modules\Warrens Tester\Warrens_Flipchip_Tester.git\Warrens_Flipchip_Tester\bin\Debug\FTDI2XX.dll

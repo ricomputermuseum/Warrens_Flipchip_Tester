@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BuildAssembler</name>
+    </assembly>
+    <members>
+        <member name="T:Sandcastle.Tools.MSBuild.BuildAssembler">
+            <summary>
+            This task is used to run the BuildAssembler tool from MSBuild
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.MSBuild.BuildAssembler.WorkingFolder">
+            <summary>
+            This is used to pass in the working folder where the files are located
+            </summary>
+            <value>If not set, no working folder will be set for the build</value>
+        </member>
+        <member name="P:Sandcastle.Tools.MSBuild.BuildAssembler.ConfigurationFile">
+            <summary>
+            This is used to pass in the configuration filename
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.MSBuild.BuildAssembler.ManifestFile">
+            <summary>
+            This is used to pass in the manifest filename
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.MSBuild.BuildAssembler.BuildAssemblerInstance">
+            <summary>
+            The build assembler instance
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.MSBuild.BuildAssembler.Cancel">
+            <summary>
+            Cancel the build
+            </summary>
+            <remarks>The build will terminate as soon as possible after initializing a component or after a
+            topic finishes being generated.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.MSBuild.BuildAssembler.Execute">
+            <summary>
+            This executes the task
+            </summary>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.MSBuild.BuildAssembler.BuildTopics">
+            <summary>
+            This builds the topics based on the configuration and manifest
+            </summary>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.MSBuild.BuildAssembler.WriteMessage(Sandcastle.Core.LogLevel,System.String,System.Object[])">
+            <summary>
+            Write a formatted message to the task log with the given parameters
+            </summary>
+            <param name="level">The log level of the message</param>
+            <param name="format">The message format string</param>
+            <param name="args">The list of arguments to format into the message</param>
+        </member>
+    </members>
+</doc>

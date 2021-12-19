@@ -1,0 +1,3387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sandcastle.Tools.BuildComponents</name>
+    </assembly>
+    <members>
+        <member name="T:Sandcastle.Tools.BuildComponents.AdditionalHeaderResourcesComponent">
+            <summary>
+            This component is used add additional metadata, style sheet, and script file resources to the header of
+            the transformed topics.
+            </summary>
+            <remarks>The configuration consists of a set of <c>script</c> and <c>stylesheet</c> elements with a
+            <c>name</c> attribute that specifies the file to add.  The appropriate <c>script</c> and <c>link</c>
+            elements will be appended to the end of the <c>head</c> element.  In addition, <c>meta</c> elements can
+            be added.  The metadata will be added to the start of the <c>head</c> element verbatim.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.AdditionalHeaderResourcesComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.AdditionalHeaderResourcesComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.AdditionalHeaderResourcesComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.AdditionalHeaderResourcesComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.AdditionalHeaderResourcesComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CloneComponent">
+            <summary>
+            This build component is used to clone the topic for each set of build components and execute them
+            on the cloned topic.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CloneComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CloneComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CloneComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.CloneComponent.GroupId">
+            <inheritdoc />
+            <remarks>This sets a unique group ID for each branch</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CloneComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+            <remarks>Multiple <c>branch</c> elements are specified as the configuration.  Each <c>branch</c>
+            element can contain one or more <c>component</c> definitions that will be created and executed when
+            this component is applied.  Each branch receives a clone of the document.  This may be useful for
+            generating multiple help output formats in one build configuration.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CloneComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CloneComponent.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CodeBlockComponent">
+             <summary>
+             This build component is used to search for &lt;code&gt; XML comment tags and colorize the code within
+             them.  It can also include code from an external file or a region within the file.
+             </summary>
+             <remarks>The colorizer files are only copied once and only if code is actually colorized.  If the files
+             already exist (i.e. additional content has replaced them), they are not copied either.  That way, you
+             can customize the color style sheet as you see fit without modifying the default style sheet.</remarks>
+             <example>
+             <code language="xml" title="Example configuration">
+             &lt;!-- Code block component configuration.  This must appear before
+                  the TransformComponent. --&gt;
+             &lt;component id="Code Block Component"&gt;
+                 &lt;!-- Base path for relative filenames in source
+                      attributes (optional). --&gt;
+                 &lt;basePath value="..\SandcastleComponents" /&gt;
+            
+                 &lt;!-- Base output paths for the files (required).  These should
+                      match the parent folder of the output path of the HTML files
+                      used in the SaveComponent instances. --&gt;
+                 &lt;outputPaths&gt;
+                   &lt;path value="Output\HtmlHelp1\" /&gt;
+                   &lt;path value="Output\MSHelpViewer\" /&gt;
+                   &lt;path value="Output\Website\" /&gt;
+                 &lt;/outputPaths&gt;
+                 
+                 &lt;!-- Allow missing source files (Optional).  If omitted,
+                      it will generate errors if referenced source files
+                      are missing. --&gt;
+                 &lt;allowMissingSource value="false" /&gt;
+             
+                 &lt;!-- Remove region markers from imported code blocks.  If omitted,
+                      region markers in imported code blocks are left alone. --&gt;
+                 &lt;removeRegionMarkers value="false" /&gt;
+            
+                 &lt;!-- Code colorizer options (required).
+                   Attributes:
+                     Language syntax configuration file (required)
+                     XSLT style sheet file (required)
+                     CSS style sheet file (required)
+                     Script file (required)
+                     Disabled (optional, leading whitespace normalization only)
+                     Default language (optional)
+                     Enable line numbering (optional)
+                     Enable outlining (optional)
+                     Keep XML comment "see" tags within the code (optional)
+                     Tab size for unknown languages (optional, 0 = use default)
+                     Use language name as default title (optional) --&gt;
+                 &lt;colorizer syntaxFile="highlight.xml" styleFile="highlight.xsl"
+                   stylesheet="highlight.css" scriptFile="highlight.js"
+                   disabled="false" language="cs" numberLines="false" outlining="false"
+                   keepSeeTags="false" tabSize="0" defaultTitle="true" /&gt;
+             &lt;/component&gt;
+             </code>
+            
+             <code language="xml" title="Examples as used in XML comments.">
+             &lt;example&gt;
+             A basic code block that uses the configuration defaults:
+             &lt;code&gt;
+             /// Code to colorize
+             &lt;/code&gt;
+            
+             Override options with block-specific options:
+             &lt;code language="xml" numberLines="true" outlining="false" tabSize="8" &gt;
+                 &amp;lt;XmlTags/&amp;gt;
+             &lt;/code&gt;
+            
+             An entire external file or a delimited region from it can be
+             included.  This allows you to compile your example code externally
+             to ensure that it is still valid and saves you from maintaining it
+             in two places.
+            
+             Retrieve all code from an external file.  Use VB.NET syntax.
+             &lt;code source="..\Examples\WholeDemo.vb" language="vbnet"/&gt;
+            
+             Retrieve a specific #region from an external file.
+             &lt;code source="..\Examples\SeveralExamples.vb"
+                 region="Example 1" language="vbnet"/&gt;
+             
+             Keep &lt;see&gt; tags within comments so that they are converted to
+             links to the help topics.
+             &lt;code keepSeeTags="true"&gt;
+             int x = this.&lt;see cref="CountStuff"&gt;CountStuff&lt;/see&gt;(true);
+             
+             string value = this.&lt;see cref="System.Object.ToString"&gt;
+             &lt;code&gt;
+            
+             &lt;example&gt;
+             </code>
+             </example>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component used to colorize code blocks
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Factory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Factory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+            <remarks>See the <see cref="T:Sandcastle.Tools.BuildComponents.CodeBlockComponent"/> class topic for an example of the configuration and
+            usage.</remarks>
+            <exception cref="T:System.ArgumentException">This is thrown if an error is detected in the
+            configuration.</exception>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <summary>
+            This is implemented to perform the code colorization.
+            </summary>
+            <param name="document">The XML document with which to work.</param>
+            <param name="key">The key (member name) of the item being documented.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.Dispose(System.Boolean)">
+            <summary>
+            At disposal, copy the script and style files if any topics with code blocks were encountered
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.LoadNestedCodeBlocks(System.String,System.Xml.XPath.XPathNavigator,System.Xml.XPath.XPathExpression,Sandcastle.Core.BuildAssembler.MessageLevel)">
+            <summary>
+            This is used to load a set of nested code blocks from external files
+            </summary>
+            <param name="key">The topic key</param>
+            <param name="navCode">The node in which to replace the nested code blocks</param>
+            <param name="nestedCode">The XPath expression used to locate the nested code blocks.</param>
+            <param name="msgLevel">The message level for missing source code</param>
+            <returns>The HTML encoded blocks extracted from the files as a single code block</returns>
+            <remarks>Only source and region attributes are used.  All other attributes are obtained from the
+            parent code block.  Text nodes are created to replace the nested code tags so that any additional
+            text in the parent code block is also retained.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.LoadCodeBlock(System.String,System.Xml.XmlNode,Sandcastle.Core.BuildAssembler.MessageLevel)">
+            <summary>
+            This is used to load a code block from an external file.
+            </summary>
+            <param name="key">The topic key</param>
+            <param name="code">The node containing the attributes</param>
+            <param name="msgLevel">The message level for missing source code</param>
+            <returns>The HTML encoded block extracted from the file.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CodeBlockComponent.TransformComponent_TopicTransformed(System.Object,System.EventArgs)">
+            <summary>
+            This is used to complete the process by inserting the colorized code within the topic after it has
+            been transformed to HTML.
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+            <remarks>A two-phase approach is needed as the HTML for the colorized code wouldn't make it through
+            the conceptual content XSL transformations.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.CopyCommand">
+            <summary>
+            This is an abstract base class used for copy commands
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyCommand.ParentComponent">
+            <summary>
+            This read-only property returns the parent component
+            </summary>
+            <value>This can be used to log messages</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyCommand.Source">
+            <summary>
+            This read-only property returns the XPath expression used to get the source elements
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyCommand.Target">
+            <summary>
+            This read-only property returns the XPath expression used to get the target element to which the
+            source elements are copied
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyCommand.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parent">The parent build component</param>
+            <param name="sourceXPath">The source XPath expression</param>
+            <param name="targetXPath">The target XPath expression</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyCommand.Apply(System.Xml.XmlDocument,System.Xml.IXmlNamespaceResolver)">
+            <summary>
+            Implement this method to apply the copy command to the given target document using the given context
+            </summary>
+            <param name="targetDocument">The target document</param>
+            <param name="context">The context to use</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.CopyFromFileCommand">
+            <summary>
+            This represents the copy command for the <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromFileComponent"/>
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromFileCommand.SourceDocument">
+            <summary>
+            This read-only property returns the source document from which to copy data
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyFromFileCommand.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.Xml.XPath.XPathDocument,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parent">The parent build component</param>
+            <param name="sourceDocument">The source XPath document</param>
+            <param name="sourceXPath">The source XPath expression</param>
+            <param name="targetXPath">The target XPath expression</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyFromFileCommand.Apply(System.Xml.XmlDocument,System.Xml.IXmlNamespaceResolver)">
+            <summary>
+            Apply the copy command to the specified target document using the specified context
+            </summary>
+            <param name="targetDocument">The target document</param>
+            <param name="context">The context to use</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.CopyFromFilesCommand">
+            <summary>
+            This represents the copy command for the <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent"/>
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromFilesCommand.BasePath">
+            <summary>
+            This read-only property returns the base path containing the source files
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromFilesCommand.SourceFile">
+            <summary>
+            This read-only property returns the XPath expression used to get the file from which to copy elements
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyFromFilesCommand.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parent">The parent build component</param>
+            <param name="basePath">The base path in which to find the files</param>
+            <param name="fileXPath">The file XPath expression used to get the file from which to copy elements</param>
+            <param name="sourceXPath">The source XPath expression</param>
+            <param name="targetXPath">The target XPath expression</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyFromFilesCommand.Apply(System.Xml.XmlDocument,System.Xml.IXmlNamespaceResolver)">
+            <summary>
+            Apply the copy command to the specified target document using the specified context
+            </summary>
+            <param name="targetDocument">The target document</param>
+            <param name="context">The context to use</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand">
+            <summary>
+            This represents the copy command for the <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent"/>
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.SourceIndex">
+            <summary>
+            This read-only property returns the source index
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.Key">
+            <summary>
+            This read-only property returns the key XPath expression
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.IsAttribute">
+            <summary>
+            This read-only property determines if the source nodes are added to the target as attributes or
+            as child elements.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.IgnoreCase">
+            <summary>
+            This read-only property determines whether to search for index keys case-insensitively
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.MissingEntry">
+            <summary>
+            This is used to get or set the message level for missing index entries
+            </summary>
+            <value>The default is <c>Ignore</c> to ignore missing index entries without logging a message</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.MissingSource">
+            <summary>
+            This is used to get or set the message level for missing source entries
+            </summary>
+            <value>The default is <c>Ignore</c> to ignore missing source entries without logging a message</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.MissingTarget">
+            <summary>
+            This is used to get or set the message level for missing target entries
+            </summary>
+            <value>The default is <c>Ignore</c> to ignore missing target entries without logging a message</value>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,Sandcastle.Tools.BuildComponents.Commands.IndexedCache,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parent">The parent build component</param>
+            <param name="sourceIndex">The source index</param>
+            <param name="keyXPath">The key XPath expression</param>
+            <param name="sourceXPath">The source XPath expression</param>
+            <param name="targetXPath">The target XPath expression</param>
+            <param name="isAttribute">True if the targets are to be added as attributes, false if they are to be
+            added as elements</param>
+            <param name="ignoreCase">True to ignore case on the keys when retrieving index values</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.CopyFromIndexCommand.Apply(System.Xml.XmlDocument,System.Xml.IXmlNamespaceResolver)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache">
+            <summary>
+            This is a version of the <c>InMemoryIndexCache</c> that adds the ability to store index information in
+            one or more persistent ESENT databases.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.#ctor(Sandcastle.Tools.BuildComponents.CopyFromIndexComponent,System.Xml.XmlNamespaceManager,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent"/> to which the indexed cache belongs</param>
+            <param name="context">A context to use with the key and value XPath expressions</param>
+            <param name="configuration">The configuration to use</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.AddDocuments(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+            <remarks>If a cache path attribute is found and is not empty, the given database cache is used rather
+            than an in-memory cache for the file set.  If not found or empty, the index information is added to
+            the standard in-memory cache.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.ReportCacheStatistics">
+            <summary>
+            Report the cache usage for the build
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.ESentIndexedCache.CreateCache(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to create the index cache database
+            </summary>
+            <param name="configuration">The configuration to use</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.IndexedCache">
+            <summary>
+            This abstract base class is used to create indexed caches of information represented by XPathNavigators
+            such as reflection information and XML comments.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Component">
+            <summary>
+            This read-only property returns a reference to the <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent"/> that owns it
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Name">
+            <summary>
+            This read-only property returns the name of the index cache
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.ValueExpression">
+            <summary>
+            This read-only property returns the XPath expression used to search for values in the XML files
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.KeyExpression">
+            <summary>
+            This read-only property returns the XPath expression used to extract the key from values
+            </summary>
+            <value>The key expression is always relative to the index value node</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.IsDisposed">
+            <summary>
+            This read-only property can be used to determine whether or not the indexed cache has been disposed
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Count">
+            <summary>
+            This read-only property returns a count of the items in the indexed cache
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Item(System.String)">
+            <summary>
+            This read-only property returns the value in the indexed cache for the given key
+            </summary>
+            <param name="key">The key to look up</param>
+            <returns>The value associated with the key or null if it was not found</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.#ctor(Sandcastle.Tools.BuildComponents.CopyFromIndexComponent,System.Xml.XmlNamespaceManager,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent"/> to which the indexed cache belongs</param>
+            <param name="context">A context to use with the key and value XPath expressions</param>
+            <param name="configuration">The configuration to use</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Finalize">
+            <summary>
+            This handles garbage collection to ensure proper disposal of the indexed cache if not done
+            explicitly with <see cref="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Dispose"/>.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the indexed cache
+            </summary>
+            <overloads>There are two overloads for this method</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.Dispose(System.Boolean)">
+            <summary>
+            This can be overridden by derived classes to add their own disposal code if necessary.
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.LoadXmlCommentsFile(System.String)">
+            <summary>
+            This loads an XML file and handles redirection in XML comments files
+            </summary>
+            <param name="filename">The XML file to load</param>
+            <returns>An <see cref="T:System.Xml.XPath.XPathDocument"/> instance for the loaded XML file or null if it could not be
+            loaded.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.AddDocuments(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to index documents and add their key/file mappings to the cache
+            </summary>
+            <param name="configuration">The configuration used to add documents</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.ReportCacheStatistics">
+            <summary>
+            This can be overridden in derived classes to report cache usage statistics after the build
+            </summary>
+            <remarks>The default implementation does nothing.  You can override this to provide information that
+            can help adjust the cache size to make it more efficient.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.GetKeys(System.String)">
+            <summary>
+            This returns an enumerable list of all key values from the specified XML file based on the
+            expressions for this cache.
+            </summary>
+            <param name="file">The XML file from which to obtain the keys</param>
+            <returns>An enumerable list of the key values in the given file</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.IndexedCache.GetValues(System.String)">
+            <summary>
+            This returns an enumerable list of all key/value pairs from the specified XML file based on the
+            expressions for this cache.
+            </summary>
+            <param name="file">The XML file from which to obtain the keys</param>
+            <returns>An enumerable list of the key/value values in the given file</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache">
+            <summary>
+            This contains a collection of XPath navigators indexed by member ID stored in a simple
+            <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2"/> entirely in memory.
+            </summary>
+            <remarks>This index maps the element keys to the files in which they are found.  As needed, the files
+            containing the requested keys are loaded and cached in memory.  When the cache fills, the oldest file is
+            unloaded to make room for a new file.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.IndexedDocument">
+            <summary>
+            This is used by the <see cref="T:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache"/> to contain index information for an individual
+            XML file.
+            </summary>
+            <remarks>Instances of this class are created and cached as needed</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.IndexedDocument.Item(System.String)">
+            <summary>
+            This read-only property returns the XPath navigator for the specified key
+            </summary>
+            <param name="key">The key to look up</param>
+            <returns>The XPath navigator associated with the key</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.IndexedDocument.#ctor(Sandcastle.Tools.BuildComponents.Commands.IndexedCache,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cache">The cache with which this indexed document is associated</param>
+            <param name="file">The file to index</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.#ctor(Sandcastle.Tools.BuildComponents.CopyFromIndexComponent,System.Xml.XmlNamespaceManager,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent"/> to which the indexed cache belongs</param>
+            <param name="context">A context to use with the key and value XPath expressions</param>
+            <param name="configuration">The indexed cache configuration</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.AddDocuments(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.InMemoryIndexedCache.ReportCacheStatistics">
+            <summary>
+            Report the cache usage for the build
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache">
+            <summary>
+            This is a version of the <c>InMemoryIndexCache</c> that adds the ability to store index information in a
+            persistent SQL database.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.#ctor(Sandcastle.Tools.BuildComponents.CopyFromIndexComponent,System.Xml.XmlNamespaceManager,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The <see cref="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent"/> to which the indexed cache belongs</param>
+            <param name="context">A context to use with the key and value XPath expressions</param>
+            <param name="configuration">The configuration to use</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.AddDocuments(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+            <remarks>If a <c>groupId</c> attribute is found, the given database cache is used rather than an
+            in-memory cache for the file set.  If not found, the index information is added to the standard
+            in-memory cache.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.ReportCacheStatistics">
+            <summary>
+            Report the cache usage for the build
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Commands.SqlIndexedCache.CreateCache(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to create the index cache
+            </summary>
+            <param name="configuration">The configuration to use</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CopyFromFileComponent">
+            <summary>
+            This build component copies elements from one or more constant XML files into the target document based
+            on one or more copy commands that define the elements to copy and where to put them.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CopyFromFileComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFileComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFileComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFileComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFileComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent">
+            <summary>
+            This build component copies elements from one or more XML files determined using an XPath query into the
+            target document based on one or more copy commands that define the elements to copy and where to put them.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromFilesComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent">
+            <summary>
+            This build component copies elements from an indexed set of XML files into the target document based on
+            one or more copy commands that define the elements to copy and where to put them.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Factory.CopyComponents">
+            <summary>
+            This is used to import the list of copy component factories that is passed to the build component
+            when it is created.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Context">
+            <summary>
+            This read-only property returns the context to use for the index when evaluating XPath expressions
+            </summary>
+            <remarks>Since this is only for providing XML namespaces, it can be shared amongst all indexes</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore,System.Collections.Generic.List{System.Lazy{Sandcastle.Core.BuildAssembler.BuildComponent.ICopyComponentFactory,Sandcastle.Core.BuildAssembler.BuildComponent.ICopyComponentMetadata}})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+            <param name="copyComponentFactories">The list of available copy component factory components</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.CreateIndex(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to create the index cache
+            </summary>
+            <param name="configuration">The index configuration</param>
+            <returns>An instance of an <see cref="T:Sandcastle.Tools.BuildComponents.Commands.IndexedCache"/> derived class</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.CopyFromIndexComponent.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ExampleComponent">
+            <summary>
+            This build component is used to replace code references with snippets from a file
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ExampleComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.LoadContent(System.String)">
+            <summary>
+            Snippet loading logic
+            </summary>
+            <param name="file">The file from which to load the snippets</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.ColorizeSnippet(System.String,System.Collections.Generic.List{Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule})">
+            <summary>
+            Colorization logic
+            </summary>
+            <param name="text">The text to colorize</param>
+            <param name="rules">The colorization rules</param>
+            <returns>A collection of colorized code regions</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.WriteColorizedSnippet(System.Collections.Generic.ICollection{Sandcastle.Tools.BuildComponents.Snippets.Region},System.Xml.XmlWriter)">
+            <summary>
+            Write the colorized code snippet to the output
+            </summary>
+            <param name="regions">A collection of colorized code regions</param>
+            <param name="writer">The XML writer to which the colorized code is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.StripLeadingSpaces(System.String)">
+            <summary>
+            Strip a common amount of leading whitespace from each line of the given text block
+            </summary>
+            <param name="text">The text from which to strip leading whitespace</param>
+            <returns>The text with the leading whitespace stripped from each line</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ExampleComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.FileCreatedEventArgs">
+            <summary>
+            This event arguments class is used by build components to indicate that they have saved a file of some
+            sort (help content or fragment).
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.FileCreatedEventArgs.FilePath">
+            <summary>
+            This read-only property returns the path to the saved file
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.FileCreatedEventArgs.IsContentFile">
+            <summary>
+            This read-only property indicates whether or not the file is a help content file
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.FileCreatedEventArgs.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="filePath">The path to the saved file</param>
+            <param name="isContentFile">True if the saved file is a help content file, false if not</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ForEachComponent">
+            <summary>
+            This component is used to execute a set of components on the topic
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ForEachComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ForEachComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ForEachComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.ForEachComponent.GroupId">
+            <inheritdoc />
+            <remarks>This sets the group ID for each subcomponent</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ForEachComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ForEachComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ForEachComponent.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ForEachComponent.ApplyComponents(System.Xml.XmlDocument,System.String)">
+            <summary>
+            Apply the components to the document
+            </summary>
+            <param name="document">The document to which the topics are applied</param>
+            <param name="key">The document key</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.IfThenComponent">
+            <summary>
+            This component is used to conditionally execute a set of components based on an XPath condition
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.IfThenComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IfThenComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IfThenComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IfThenComponent.GroupId">
+            <inheritdoc />
+            <remarks>This sets a unique group ID for each branch</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IfThenComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IfThenComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IfThenComponent.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.IntelliSenseComponent">
+            <summary>
+            This build component is used to generate IntelliSense files based on the documented APIs.
+            </summary>
+            <remarks>Only the basic set of tags needed for IntelliSense are exported and only for documented API
+            members.  This is based on the  Microsoft IntelliSense build component.  That version only works with
+            Microsoft-specific XML comments files and does not work with general XML comments files created by the
+            compilers.</remarks>
+            <example>
+            <code language="xml" title="Example configuration">
+            &lt;!-- IntelliSense component configuration.  This must appear
+                 before the TransformComponent. --&gt;
+            &lt;component id="IntelliSense Component"&gt;
+             &lt;!-- Output options (optional)
+                  Attributes:
+                     Include Namespaces (false by default)
+                     Namespaces filename ("Namespaces" if not specified or empty)
+                     Output folder (current folder if not specified or empty) --&gt;
+                     Bounded cache capacity (0 if not specified) --&gt;
+             &lt;output includeNamespaces="false" namespacesFile="Namespaces"
+                 folder="C:\ProjectDocs\" boundedCapacity="100" /&gt;
+            &lt;/component&gt;
+            </code>
+            </example>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Factory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Factory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Factory.Dependencies">
+            <inheritdoc />
+            <remarks>Indicate a dependency on the missing documentation component as it will produce more
+            complete documentation with all the proper elements present.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo">
+            <summary>
+            This is used to contain the XML comments elements information that will be written to the
+            IntelliSense files.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.AssemblyName">
+            <summary>
+            The assembly name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.MemberName">
+            <summary>
+            The member name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.Summary">
+            <summary>
+            The summary element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.Params">
+            <summary>
+            The parameter element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.TypeParams">
+            <summary>
+            The type parameter element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.Returns">
+            <summary>
+            The returns element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.Value">
+            <summary>
+            The value element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.Exceptions">
+            <summary>
+            The exception element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.CodeContracts">
+            <summary>
+            The code contracts element comments
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.EnumElements">
+            <summary>
+            For enumerated types, the enum member element summary comments
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.CommentsInfo.#ctor(Sandcastle.Tools.BuildComponents.IntelliSenseComponent,System.String,System.String,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The component creating the instance</param>
+            <param name="assemblyName">The assembly name</param>
+            <param name="memberName">The member name</param>
+            <param name="comments">The XPath navigator from which to extract the comments information</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.Dispose(System.Boolean)">
+            <summary>
+            Wait for the comments writer task to complete when disposed
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.IntelliSenseComponent.WriteComments">
+            <summary>
+            This is used to write the comments to the appropriate assembly XML comments file
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.LanguageSpecificTextComponent">
+            <summary>
+            This component is used to convert the span style language-specific text elements to the script style
+            elements used in the VS2010 and later styles.
+            </summary>
+            <remarks>An optional <c>scriptFunction</c> configuration element with a <c>name</c> attribute specifying
+            the JavaScript function to call can be specified.  If omitted, the function name defaults to
+            "<c>AddLanguageSpecificTextSet</c>".</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.LanguageSpecificTextComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.LanguageSpecificTextComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.LanguageSpecificTextComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.LanguageSpecificTextComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.LanguageSpecificTextComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver">
+            <summary>
+            This is used to perform lookups using the Microsoft Docs cross-reference service on .NET Framework member
+            IDs and return the URL for them.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.CrossReferenceUrlFormat">
+            <summary>
+            This is used to get the cross-reference URL used to perform the lookup
+            </summary>
+            <value>It should contain a single format parameter ({0}) that will be replaced by the member ID.
+            If not set, the default is "https://xref.docs.microsoft.com/query?uid={0}"</value>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+            <remarks>The default constructor creates a simple dictionary to hold the cached URLs</remarks>
+            <overloads>There are two overloads for the constructor</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.#ctor(System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            This constructor is used to create the resolver using an existing cache
+            </summary>
+            <param name="urlCache">A cache of existing member ID URLs</param>
+            <param name="isShared">True if the cache is shared, false if not.  If not shared, the cache will
+            be disposed of when this instance is disposed of</param>
+            <remarks>This constructor allows you to pass in a persistent cache with preloaded values that will
+            save looking up values that have already been determined.</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.Locale">
+            <inheritdoc />
+            <remarks>This is not used by this resolver</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.IsDisabled">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.DisabledReason">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.CachedUrls">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.CacheItemsAdded">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MicrosoftDocsXRefServiceResolver.ResolveUrlForId(System.String)">
+            <summary>
+            This is used to get the Microsoft Docs URL for the given .NET Framework member ID
+            </summary>
+            <param name="id">The member ID to look up</param>
+            <returns>The URL for the member ID or null if not found</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.MSHCComponent">
+             <summary>
+             This class is a modified version of the original <c>MSHCComponent</c> that is used to add MS Help Viewer
+             meta data to the topics.  This version allows the inclusion of a <c>sortOrder</c> attribute on the table
+             of contents file elements.  This allows the sort order of the elements to be defined to set the proper
+             placement of the TOC entries when parented to an entry outside of the help file and to parent the API
+             content within a conceptual content folder.
+             </summary>
+             <remarks>The <c>sortOrder</c> attributes are optional.  If not found, standard ordering is applied
+             starting from zero.  If a <c>sortOrder</c> attribute is found, numbering starts from that value for the
+             associated topic and increments by one for all subsequent topics until another <c>sortOrder</c> attribute
+             is encountered or the end of the group is reached.</remarks>
+             <example>
+             <code language="xml" title="Example Component Configuration">
+             &lt;component id="Microsoft Help Viewer Metadata Component"&gt;
+               &lt;data self-branded="true" topic-version="100" toc-file="toc.xml"
+               toc-parent="" toc-parent-version="100" locale="en-US" /&gt;
+             &lt;/component&gt;
+             </code>
+            
+             <code language="xml" title="Example toc.xml File">
+             &lt;?xml version="1.0" encoding="utf-8"?&gt;
+             &lt;topics&gt;
+               &lt;!-- Sort our content below that of the parent node's existing sub-topics --&gt;
+               &lt;topic id="d4648875-d41a-783b-d5f4-638df39ee413" file="d4648875-d41a-783b-d5f4-638df39ee413" sortOrder="100"&gt;
+                 &lt;topic id="57f7aedc-17d3-4547-bdf9-5b468a08a1bc" file="57f7aedc-17d3-4547-bdf9-5b468a08a1bc" /&gt;
+                 &lt;topic id="0e6bbd29-775a-8deb-c4f5-5b1e63349ef1" file="0e6bbd29-775a-8deb-c4f5-5b1e63349ef1" /&gt;
+                 &lt;topic id="fcdfafc4-7625-f407-d8e9-ec006944e1d7" file="fcdfafc4-7625-f407-d8e9-ec006944e1d7" /&gt;
+                 &lt;!-- API content (7 namespaces, merged later) goes here and this topic follows it --&gt;
+                 &lt;topic id="ce37cf86-fd95-49fc-b048-ba7d25d68d87" file="ce37cf86-fd95-49fc-b048-ba7d25d68d87" sortOrder="10"&gt;
+               &lt;/topic&gt;
+               .
+               .
+               .
+             &lt;/topics&gt;
+             </code>
+             </example>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.MSHCComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MSHCComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MSHCComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MSHCComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.MSHCComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent">
+            <summary>
+            This component is used to resolve links to media files (i.e images)
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent.Dispose(System.Boolean)">
+            <summary>
+            At disposal, copy the media files that were encountered
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent">
+             <summary>
+             This is a modified version of the original <c>ResolveConceptualLinksComponent</c> that is used to resolve
+             links to conceptual topics.
+             </summary>
+             <remarks>This version contains the following improvements and fixes:
+             <list type="bullet">
+               <item>Broken links use the <b>None</b> style rather than the <c>Index</c> style so that it is apparent
+             that they do not work.</item>
+               <item>The inner text from the conceptual link is used if specified.</item>
+               <item>On broken links, when the <c>showBrokenLinkText</c> option is true and there is no inner text,
+             the target value is displayed.</item>
+               <item>Conceptual link targets can include an optional anchor name from within the target such as
+             "#Name" (see examples below).</item>
+               <item>Unnecessary whitespace is removed from the link text.</item>
+               <item>If the companion file contains a <c>&lt;linkText&gt;</c> element and no inner text is specified,
+             its value will be used for the link text rather than the title.  This allows for a shorter title or
+             description to use as the default link text.</item>
+             </list></remarks>
+             <example>
+             On links without inner text, if the companion file contains a <c>linkText</c> element, that text will be
+             used.  If not, the title is used.
+            
+             <code language="xml" title="Example Links">
+             <![CDATA[<!-- Link with inner text -->
+             <link xlink:href="3ab3113f-984b-19ac-7812-990192aca5b0">Click Here</link>
+             <!-- Link with anchor reference -->
+             <link xlink:href="3ab3113f-984b-19ac-7812-990192aca5b1#SubTopic" />
+             <!-- Link with inner text and an anchor reference -->
+             <link xlink:href="3ab3113f-984b-19ac-7812-990192aca5b1#PropA">PropertyA</link>]]>
+             </code>
+             
+             <code language="xml" title="Example configuration">
+             &lt;!-- Resolve conceptual links --&gt;
+             &lt;component id="Resolve Conceptual Links Component">
+                 &lt;showBrokenLinkText value="true" /&gt;
+                 &lt;targets base="xmlComp" type="local" /&gt;
+             &lt;/component&gt;
+             </code>
+             </example>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <summary>
+            This is implemented to resolve the conceptual links
+            </summary>
+            <param name="document">The XML document with which to work.</param>
+            <param name="key">The key (member name) of the item being documented.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.BrokenLinkDisplayText(System.String,System.String)">
+            <summary>
+            Determine what to display for broken links
+            </summary>
+            <param name="target">The target key</param>
+            <param name="text">The link text</param>
+            <returns>The text to display for the broken link</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.CompileXPathExpression(System.String)">
+            <summary>
+            Compile an XPath expression and report an error if it fails
+            </summary>
+            <param name="xpath">The XPath expression to compile.</param>
+            <returns>The compiled XPath expression.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent.GetTargetInfoFromCache(System.String)">
+            <summary>
+            Get target info
+            </summary>
+            <param name="target">The target for which to get info</param>
+            <returns>The target info object if found or null if not found</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent">
+            <summary>
+            This build component is used to resolve links to reference topics
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.SharedMemberUrlCacheId">
+            <summary>
+            This is used as the key name when sharing the URL cache across instances
+            </summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.SharedReferenceTargetsId">
+            <summary>
+            This is used as the key name when sharing the target dictionaries across instances
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.UrlResolver">
+            <summary>
+            This read-only property returns the member ID URL resolver instance
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.Targets">
+            <summary>
+            This read-only property returns the target type dictionary
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.Dispose(System.Boolean)">
+            <summary>
+            This is overridden to save the updated cache information and dispose of target information
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.CreateMemberIdResolver(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to create a member ID URL resolver for the component to use in looking up help website
+            URLs.
+            </summary>
+            <param name="configuration">The component configuration</param>
+            <returns>An <see cref="T:Sandcastle.Core.BuildAssembler.BuildComponent.IMemberIdUrlResolver"/> instance</returns>
+            <remarks>This can be overridden in derived classes to provide persistent caches with backing stores
+            other than the default dictionary serialized to a binary file.  It also allows sharing the cache
+            across instances by placing it in the <see cref="P:Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore.Data"/> dictionary using the key
+            name <see cref="F:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.SharedMemberUrlCacheId"/>.
+            
+            <para>If overridden, the <see cref="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.UpdateUrlCache"/> method should also be overridden to
+            persist changes to the cache if needed.</para></remarks>
+            <overloads>There are two overloads for this method</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.CreateMemberIdResolver(System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            This is used to create a member ID URL resolver for the component to use in looking up help website
+            URLs.
+            </summary>
+            <param name="cache">A cache of existing URLs or null to use the default cache.</param>
+            <param name="isShared">True if the cache is shared, false if not.  If not shared, the cache will
+            be disposed of when the instance is disposed of.  If <paramref name="cache"/> is null, this parameter
+            is ignored.</param>
+            <returns>An <see cref="T:Sandcastle.Core.BuildAssembler.BuildComponent.IMemberIdUrlResolver"/> instance</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.UpdateUrlCache">
+            <summary>
+            This is used to update the URL cache file
+            </summary>
+            <remarks>The default implementation serializes the standard dictionary to a file using binary
+            serialization if new entries were added and it loaded the cache file.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent.CreateTargetDictionary(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to create a <see cref="T:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary"/> used to store reference link targets
+            </summary>
+            <param name="configuration">The configuration element for the target dictionary</param>
+            <returns>A default <see cref="T:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary"/> instance containing the reference link
+            targets</returns>
+            <remarks>This can be overridden in derived classes to provide persistent caches with backing stores
+            other than the default <see cref="T:System.Collections.Generic.Dictionary`2"/></remarks>.
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SaveComponent">
+            <summary>
+            This build component is used to save the generated document or parts of it to a file
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SaveComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SaveComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SaveComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SaveComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SaveComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SaveComponent.Dispose(System.Boolean)">
+            <summary>
+            Wait for the document writer task to complete when disposed
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SaveComponent.WriteDocuments">
+            <summary>
+            This is used to write the document to its destination file
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SharedContentComponent">
+            <summary>
+            This build component is used to replace a given set of elements with the content of shared content items
+            loaded from XML files.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SharedContentComponent.DefaultFactory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.DefaultFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SharedContentComponent.ApiTokenResolutionComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used for API token resolution
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.ApiTokenResolutionComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.ApiTokenResolutionComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.SharedContentComponent.ApiTokenResolutionComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.SharedContentComponent.ApiTokenResolutionComponentFactory.Dependencies">
+            <inheritdoc />
+            <remarks>Indicate a dependency on the missing documentation component as that's the best
+            placement if the IntelliSense component is used too.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <summary>
+            Search for elements to replace and insert the shared content in their place
+            </summary>
+            <param name="document">The document in which to replace the elements</param>
+            <param name="key">The document key</param>
+            <remarks>Shared content items are replaced recursively</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.ParseDocuments(System.String)">
+            <summary>
+            Find content files using the given wildcard and load all of the content items in them
+            </summary>
+            <param name="wildcardPath">The wildcard path used to locate content item files</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.LoadContent(System.String)">
+            <summary>
+            Load all shared content items from the specified file
+            </summary>
+            <param name="file">The shared content file to load</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SharedContentComponent.ResolveContent(System.String,System.Xml.XmlDocument,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Look up the shared content elements, find their corresponding shared content item and replace the
+            elements with the content item value.
+            </summary>
+            <param name="key">The document key</param>
+            <param name="document">The document containing the topic</param>
+            <param name="start">The XPath navigator to search for content elements</param>
+            <remarks>This method will replace content items within other content items recursively</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ShowMissingComponent">
+             <summary>
+             This build component is used to add "missing" notes for missing summary, parameter, returns, value, and
+             remarks tags.  It can also add default summary documentation for constructors.
+             </summary>
+             <example>
+             <code language="xml" title="Example configuration">
+             &lt;!-- Show missing documentation component configuration.  This must
+                  appear before the TransformComponent. --&gt;
+             &lt;component id="Show Missing Documentation Component"&gt;
+                 &lt;!-- All elements are optional. --&gt;
+            
+                 &lt;!-- Auto-document constructors (true by default) --&gt;
+                 &lt;AutoDocumentConstructors value="true" /&gt;
+            
+                 &lt;!-- Auto-document dispose methods (true by default) --&gt;
+                 &lt;AutoDocumentDisposeMethods value="true" /&gt;
+            
+                 &lt;!-- Show missing param tags (true by default) --&gt;
+                 &lt;ShowMissingParams value="true" /&gt;
+            
+                 &lt;!-- Show missing typeparam tags (true by default) --&gt;
+                 &lt;ShowMissingTypeParams value="true" /&gt;
+            
+                 &lt;!-- Show missing remarks tags (false by default) --&gt;
+                 &lt;ShowMissingRemarks value="false" /&gt;
+            
+                 &lt;!-- Show missing returns tags (true by default) --&gt;
+                 &lt;ShowMissingReturns value="true" /&gt;
+            
+                 &lt;!-- Show missing summary tags (true by default) --&gt;
+                 &lt;ShowMissingSummaries value="true" /&gt;
+            
+                 &lt;!-- Show missing value tags (false by default) --&gt;
+                 &lt;ShowMissingValues value="false" /&gt;
+            
+                 &lt;!-- Show missing namespace comments (true by default) --&gt;
+                 &lt;ShowMissingNamespaces value="true" /&gt;
+            
+                 &lt;!-- Show missing include target docs (false by default) --&gt;
+                 &lt;ShowMissingIncludeTargets value="false" /&gt;
+             &lt;/component&gt;
+             </code>
+             </example>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.ShowMissingComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.Factory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+            <remarks>See the <see cref="T:Sandcastle.Tools.BuildComponents.ShowMissingComponent"/> class topic for an example of the configuration</remarks>
+            <exception cref="T:System.ArgumentException">This is thrown if an error is detected in the configuration.</exception>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <summary>
+            This is implemented to add the missing documentation tags
+            </summary>
+            <param name="document">The XML document with which to work.</param>
+            <param name="key">The key (member name) of the item being documented.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.QuotedMemberId(System.String)">
+            <summary>
+            On very rare occasions, there can be an apostrophe in an type or member ID.  If so, use double quotes
+            around the expression's parameter value.  It could just hard code them below but I can't say for sure
+            we'd never see a double quote in an ID either.  This plays it safe.
+            </summary>
+            <param name="memberId">The member ID</param>
+            <returns>The member ID in single or double quotes as needed</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.CheckForMissingText(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            Check for missing text in the specified documentation tag and, if it doesn't exist or the text is
+            blank, add a "missing" message as the documentation tag's text.
+            </summary>
+            <param name="comments">The comments node to check.</param>
+            <param name="key">The key (name) for the current item</param>
+            <param name="tagName">The tag type for which to check.</param>
+            <remarks>The messages are inserted as <c>include</c> elements.  They are wrapped in a <c>markup</c>
+            element to that they pass through without being removed by the <c>TransformComponent</c> XSL
+            transformations.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.CheckForMissingParameter(System.Xml.XmlNode,System.String,System.String,System.String)">
+            <summary>
+            Check for missing text in the specified &lt;param&gt; or &lt;typeparam&gt; tag and, if it doesn't
+            exist or the text is blank, add a "missing" message as the tag's text.
+            </summary>
+            <param name="comments">The comments node to check.</param>
+            <param name="key">The key (name) for the current item</param>
+            <param name="paramName">The parameter name for which to check.</param>
+            <param name="tagName">The tag type for which to check.</param>
+            <remarks>The messages are inserted as <c>include</c> elements.  They are wrapped in a <c>markup</c>
+            element to that they pass through without being removed by the <c>TransformComponent</c> XSL
+            transformations.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.ShowMissingComponent.CheckForMissingIncludeTarget(System.Xml.XmlNode,System.String)">
+            <summary>
+            Check for bad <c>include</c> elements and, if any are found, add a "missing" message to the summary
+            tag's text.
+            </summary>
+            <param name="comments">The comments node to check.</param>
+            <param name="key">The key (name) for the current item</param>
+            <remarks>The messages are inserted as <c>include</c> elements.  They are wrapped in a <c>markup</c>
+            element to that they pass through without being removed by the <c>TransformComponent</c> XSL
+            transformations.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet">
+            <summary>
+            This is used to track a single code snippet in the <see cref="T:Sandcastle.Tools.BuildComponents.SyntaxComponent"/>
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.CodeElement">
+            <summary>
+            This read-only property returns the code element
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.Title">
+            <summary>
+            This read-only property returns the title for the snippet if one is defined
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.Language">
+            <summary>
+            This read-only property returns the language for the snippet
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.LanguageElementName">
+            <summary>
+            This is used to get or set the language element name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.KeywordStyleParameter">
+            <summary>
+            This is used to get the keyword style parameter
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.SortOrder">
+            <summary>
+            This is used to get or set the sort order
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippet.#ctor(System.Xml.XmlElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="code">The code element</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippetGroup">
+            <summary>
+            This is used to track a group of related code snippets in the <see cref="T:Sandcastle.Tools.BuildComponents.SyntaxComponent"/>
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippetGroup.SnippetGroupElement">
+            <summary>
+            This read-only property is used to get the containing group element
+            </summary>
+            <remarks>This serves as a place holder during the grouping and sorting operations and it becomes the
+            parent of the code snippets in the final topic.</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippetGroup.CodeSnippets">
+            <summary>
+            This read-only property is used to get the list of related code snippets
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippetGroup.IsStandalone">
+            <summary>
+            This is used to get or set whether or not the group is a single, standalone snippet
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippetGroup.IsSyntaxSection">
+            <summary>
+            This is used to get or set whether or not the group is a syntax section
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.CodeSnippetGroup.#ctor(System.Xml.XmlElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="snippetGroupElement">The snippet group element used to contain the snippets</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule">
+            <summary>
+            This defines a colorization rule
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule.Pattern">
+            <summary>
+            This read-only property returns the regular expression used by the rule
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule.Region">
+            <summary>
+            This read-only property returns the optional region name used to limit the part of the match that
+            is returned from the matches.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule.ClassName">
+            <summary>
+            This read-only property returns the class name to use for the matched region
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule.#ctor(System.String,System.String)">
+            <summary>
+            Constructor.  Defines a rule with a pattern and a class name but no region name
+            </summary>
+            <param name="pattern">The regular expression used to match the region text</param>
+            <param name="className">The class name to apply to the region</param>
+            <overloads>There are two overloads for the constructor</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor.  Defines a rule with a pattern, a region name to limit the match to a specific
+            part of the pattern, and a class name.
+            </summary>
+            <param name="pattern">The regular expression used to match the region text</param>
+            <param name="region">The region name that defines the named part of the regular expression to return
+            for each match.</param>
+            <param name="className">The class name to apply to the region</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.ColorizationRule.Apply(System.String)">
+            <summary>
+            This returns an enumerable list of captures that match the pattern, if any
+            </summary>
+            <param name="text">The text to search</param>
+            <returns>An enumerable list of captures that match the pattern</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Snippets.Region">
+            <summary>
+            This defines a region of colorized code
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.Region.ClassName">
+            <summary>
+            This read-only property returns the class name used to colorize the text
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.Region.Text">
+            <summary>
+            This read-only property returns the text in the region
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.Region.#ctor(System.String)">
+            <summary>
+            Constructor.  A region of text with no class name.
+            </summary>
+            <param name="text">The text in the region</param>
+            <overloads>There are two overloads for the constructor</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.Region.#ctor(System.String,System.String)">
+            <summary>
+            Constructor.  A region of text with a class name.
+            </summary>
+            <param name="className">The class name to apply to the region</param>
+            <param name="text">The text in the region</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier">
+            <summary>
+            This represents a snippet identifier
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier.ExampleId">
+            <summary>
+            This read-only property returns the example ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier.SnippetId">
+            <summary>
+            This read-only property returns the snippet ID
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier.#ctor(System.String,System.String)">
+            <summary>
+            Constructor.  This version takes an example ID and a snippet ID
+            </summary>
+            <param name="exampleId">The example ID</param>
+            <param name="snippetId">The snippet ID</param>
+            <overloads>There are two overloads for the constructor</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier.#ctor(System.String)">
+            <summary>
+            Constructor.  This parses the example and snippet IDs from the given identifier
+            </summary>
+            <param name="identifier">The identifier to use.  This should contain the example ID and the
+            snippet ID in that order separated by a hash character (#).</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier.ToString">
+            <summary>
+            This returns the snippet identifier
+            </summary>
+            <returns>The example ID and snippet ID separated by a hash character (#)</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.SnippetIdentifier.ParseReference(System.String)">
+            <summary>
+            This is used to parse a snippet identifier containing an example ID and one or more snippet IDs
+            in a comma-separated list (i.e. ExampleID#SnippetID or ExampleID#SnippetID1,SnippetID2).
+            </summary>
+            <param name="reference">The reference to parse</param>
+            <returns>An enumerable list of snippet identifiers</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Snippets.StoredSnippet">
+            <summary>
+            This represents a stored snippet
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.StoredSnippet.Text">
+            <summary>
+            This read-only property returns the snippet text
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Snippets.StoredSnippet.Language">
+            <summary>
+            This read-only property returns the snippet language
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Snippets.StoredSnippet.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="text">The snippet text</param>
+            <param name="language">The snippet language</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SwitchComponent">
+            <summary>
+            This build component executes a set of build components on the topic based on the result of an XPath
+            expression.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SwitchComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SwitchComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SwitchComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.SwitchComponent.GroupId">
+            <inheritdoc />
+            <remarks>This sets a unique group ID for each branch</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SwitchComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SwitchComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SwitchComponent.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SyntaxComponent">
+            <summary>
+            This build component is used to generate syntax sections for API member topics
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.SyntaxComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SyntaxComponent.Factory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SyntaxComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.SyntaxComponent.Factory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SyntaxComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore,System.Collections.Generic.List{System.Lazy{Sandcastle.Core.BuildAssembler.SyntaxGenerator.ISyntaxGeneratorFactory,Sandcastle.Core.BuildAssembler.SyntaxGenerator.ISyntaxGeneratorMetadata}})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+            <param name="generatorFactories">The list of available syntax generator factory components</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SyntaxComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SyntaxComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.SyntaxComponent.TransformComponent_TopicTransforming(System.Object,System.EventArgs)">
+            <summary>
+            This is used to group and sort code snippets based on the order of the defined syntax generators
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+            <remarks>A two-phase approach is used to ensure that we don't have to be concerned about the
+            placement of the syntax component in relation to other components that may insert code snippets.
+            By running just prior to XSL transformation all other components that may insert code snippets will
+            have been executed.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ArtTarget">
+            <summary>
+            This class holds art target information used to resolve art links by the <see cref="T:Sandcastle.Tools.BuildComponents.ResolveArtLinksComponent"/>
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.Id">
+            <summary>
+            This is used to get or set the ID used to identify the file
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.InputPath">
+            <summary>
+            This is used to get or set the input path where the source file is located
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.BaseOutputPath">
+            <summary>
+            This is used to get or set the base output path for all content
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.OutputXPath">
+            <summary>
+            This is used to get or set the XPath expression used to determine the output path for the art file
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.LinkPath">
+            <summary>
+            This is used to get or set the link path to use in reference links
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.Text">
+            <summary>
+            This is used to set the alternate text for reference links
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.Name">
+            <summary>
+            This is used to get or set the name of the file
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.FormatXPath">
+            <summary>
+            This is used to get or set the XPath expression used to determine the reference link path format
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArtTarget.RelativeToXPath">
+            <summary>
+            This is used to get or set the XPath expression used to determine the relative reference link path
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkInfo">
+            <summary>
+            This class is used to hold conceptual link information used by the
+            <see cref="T:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent"/>.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkInfo.Target">
+            <summary>
+            This read-only property returns the target of the link
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkInfo.Anchor">
+            <summary>
+            This read-only property returns the optional anchor name within the target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkInfo.Text">
+            <summary>
+            This read-only property returns the text to show for the link
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkInfo.#ctor(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="node">The XPath navigator node from which to load the link settings</param>
+            <exception cref="T:System.ArgumentNullException">This is thrown if the node parameters is null</exception>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkType">
+            <summary>
+            This public enumerated type defines the conceptual content link types
+            </summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkType.None">
+            <summary>No links</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkType.Local">
+            <summary>Local links</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkType.Id">
+            <summary>Id links (MS Help Viewer only)</summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.DisplayOptions">
+            <summary>
+            This public enumerated type defines the display options for reference content links
+            </summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.DisplayOptions.ShowContainer">
+            <summary>Show the containing namespace/class</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.DisplayOptions.ShowTemplates">
+            <summary>Show template types</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.DisplayOptions.ShowParameters">
+            <summary>Show parameters</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.DisplayOptions.Default">
+            <summary>Default (show template types and parameters)</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.DisplayOptions.All">
+            <summary>Show all</summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary">
+            <summary>
+            This contains a collection of targets indexed by member ID stored in a Managed ESENT
+            <c>PersistentDictionary&lt;TKey, TValue&gt;</c>.
+            </summary>
+            <remarks>The behavior of this dictionary is to return null if a target ID is not found and to replace
+            existing entries if a duplicate ID is added.  All targets are stored in a Managed ESENT database.  The
+            initial use will create the database slowing down initialization on first use.  Subsequent uses will not
+            need to recreate it.  The trade off is that it can use much less memory at the expense of some build
+            speed for each topic.  The speed difference is offset somewhat by the shorter initialization time.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The build component that owns the dictionary.  This is useful for logging
+            messages during initialization.</param>
+            <param name="configuration">The target dictionary configuration</param>
+            <returns>A target dictionary instance that uses a simple in-memory
+            <see cref="T:System.Collections.Generic.Dictionary`2"/> instance to store the targets.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.ReportCacheStatistics">
+            <summary>
+            Report the cache usage for the build
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Add(System.String,Sandcastle.Tools.BuildComponents.Targets.Target)">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Keys">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.TryGetValue(System.String,Sandcastle.Tools.BuildComponents.Targets.Target@)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Item(System.String)">
+            <inheritdoc />
+            <returns>If not found, this implementation returns null.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target}[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ESentTargetDictionary.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary">
+            <summary>
+            This contains a collection of targets indexed by member ID stored in a simple
+            <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2"/> entirely in memory.
+            </summary>
+            <remarks>The behavior of this dictionary is to return null if a target ID is not found and to replace
+            existing entries if a duplicate ID is added.  All targets are stored in memory.  Since it must load all
+            targets the first time the files are encountered, it can slow down initialization.  The trade off is that
+            it can run faster than database-backed implementations that look up the items rather than storing them
+            in memory.
+            
+            <para>This implementation does not offer the option for a persistent cache as streaming the entire
+            dictionary in and out takes several times longer than just loading the source XML data.</para></remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The build component that owns the dictionary.  This is useful for logging
+            messages during initialization.</param>
+            <param name="configuration">The target dictionary configuration</param>
+            <returns>A target dictionary instance that uses a simple in-memory
+            <see cref="T:System.Collections.Generic.Dictionary`2"/> instance to store the targets.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Add(System.String,Sandcastle.Tools.BuildComponents.Targets.Target)">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Keys">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.TryGetValue(System.String,Sandcastle.Tools.BuildComponents.Targets.Target@)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Item(System.String)">
+            <inheritdoc />
+            <returns>If not found, this implementation returns null.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target}[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InMemoryTargetDictionary.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver">
+            <summary>
+            Link text writing logic
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.#ctor(Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="targets">The target dictionary used to resolve links</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteTarget(Sandcastle.Tools.BuildComponents.Targets.Target,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out the target link information
+            </summary>
+            <param name="target">The target for which to write link information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteNamespaceTarget(Sandcastle.Tools.BuildComponents.Targets.NamespaceTarget,System.Xml.XmlWriter)">
+            <summary>
+            Write out a namespace target
+            </summary>
+            <param name="space">The namespace target information</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteTypeTarget(Sandcastle.Tools.BuildComponents.Targets.TypeTarget,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out a type target
+            </summary>
+            <param name="type">The type target information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteTypeTarget(Sandcastle.Tools.BuildComponents.Targets.TypeTarget,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Boolean,System.Xml.XmlWriter)">
+            <summary>
+            Write out a type target
+            </summary>
+            <param name="type">The type target information</param>
+            <param name="options">The link display options</param>
+            <param name="showOuterType">True to show the outer type, false if not</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteMemberTarget(Sandcastle.Tools.BuildComponents.Targets.MemberTarget,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out a member target
+            </summary>
+            <param name="target">The member target information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteReference(Sandcastle.Tools.BuildComponents.Targets.Reference,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out a reference
+            </summary>
+            <param name="reference">The reference information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteNamespace(Sandcastle.Tools.BuildComponents.Targets.NamespaceReference,System.Xml.XmlWriter)">
+            <summary>
+            Write out a namespace reference
+            </summary>
+            <param name="spaceReference">The namespace reference information</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteType(Sandcastle.Tools.BuildComponents.Targets.TypeReference,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out a type reference
+            </summary>
+            <param name="type">The type reference information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteType(Sandcastle.Tools.BuildComponents.Targets.TypeReference,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter,System.Collections.Generic.Dictionary{Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference,Sandcastle.Tools.BuildComponents.Targets.TypeReference})">
+            <summary>
+            Write out a type reference
+            </summary>
+            <param name="type">The type reference information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+            <param name="dictionary">The template type dictionary</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteSimpleType(Sandcastle.Tools.BuildComponents.Targets.SimpleTypeReference,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out a simple type reference
+            </summary>
+            <param name="simple">The simple type reference information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteExtensionMethod(Sandcastle.Tools.BuildComponents.Targets.ExtensionMethodReference,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out an extension method reference
+            </summary>
+            <param name="extMethod">The extension method reference information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.LinkTextResolver.WriteMember(Sandcastle.Tools.BuildComponents.Targets.MemberReference,Sandcastle.Tools.BuildComponents.Targets.DisplayOptions,System.Xml.XmlWriter)">
+            <summary>
+            Write out a member reference
+            </summary>
+            <param name="member">The member reference information</param>
+            <param name="options">The link display options</param>
+            <param name="writer">The write to which the information is written</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo">
+            <summary>
+            This class is used to hold reference link information used by the
+            <see cref="T:Sandcastle.Tools.BuildComponents.ResolveReferenceLinksComponent"/>.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.Target">
+            <summary>This read-only property returns the target of the link</summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.DisplayTarget">
+            <summary>This read-only property returns the display target of the link</summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.DisplayOptions">
+            <summary>This read-only property returns the display options for the link</summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.PreferOverload">
+            <summary>This read-only property indicates whether or not to prefer the overload topic</summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.RenderAsLink">
+            <summary>
+            This read-only property indicates whether or not to render the element as an actual link
+            </summary>
+            <value>If true, it is rendered as a link.  If false, it will be rendered as an identifier.</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.Contents">
+            <summary>This read-only property returns the contents of the link</summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkInfo.#ctor(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element">The XPath navigator from which to load the link settings</param>
+            <exception cref="T:System.ArgumentNullException">This is thrown if the element parameters is null</exception>
+            <exception cref="T:System.InvalidOperationException">This is thrown if the element contains invalid
+            configuration information.</exception>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType">
+            <summary>
+            This public enumerated type defines the reference content link types
+            </summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType.None">
+            <summary>No links</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType.Self">
+            <summary>Self-referencing link (link to topic within its own page)</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType.Local">
+            <summary>Local links</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType.Msdn">
+            <summary>Links to online content (Framework types only)</summary>
+        </member>
+        <member name="F:Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType.Id">
+            <summary>Id links (MS Help Viewer only)</summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement">
+            <summary>
+            This class holds the properties of a shared content element that needs to be replaced in a topic
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement.Path">
+            <summary>
+            This read-only property returns the XPath expression used to find elements to be replaced
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement.Item">
+            <summary>
+            This read-only property returns the item XPath expression used to get the name of the content item
+            that will replace the element.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement.Undefined">
+            <summary>
+            This read-only property returns the item XPath expression used to get the value used to replace the
+            item if the named item is not found.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement.Parameters">
+            <summary>
+            This read-only property returns the XPth expression used to select parameter elements
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement.Attribute">
+            <summary>
+            This read-only property returns the XPath expression used to get an attribute name if the content
+            value is to be added as an attribute.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SharedContentElement.#ctor(System.String,System.String,System.String,System.String,System.Xml.IXmlNamespaceResolver)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="path">The path expression</param>
+            <param name="item">The item name expression</param>
+            <param name="parameters">The parameters expression</param>
+            <param name="attribute">The attribute name expression</param>
+            <param name="context">The context to use for the XPath expressions</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1">
+            <summary>
+            This is a simple dictionary that stores its data in a SQL Server database table.  An optional group ID
+            can be used to segregate values within the dictionary.
+            </summary>
+            <typeparam name="TValue">The type of the value</typeparam>
+            <remarks>This dictionary is intended for use in Sandcastle build components to store data needed for the
+            build.  The key type is always a string as is the group ID type if used.  The value type is indicated
+            using the <typeparamref name="TValue"/> type parameter and is assumed to be either a <see cref="T:System.String"/>
+            or a reference type.</remarks>
+            <threadsafety static="false" instance="false" />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator">
+            <summary>
+            This is an enumerator class used to enumerate all key/value pairs in the SQL dictionary table
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator.#ctor(Sandcastle.Tools.BuildComponents.Targets.SqlDictionary{`0})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="owner">The owning <see cref="T:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1"/> class</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator.Current">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator.System#Collections#IEnumerator#Current">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator.MoveNext">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator.Reset">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.SqlDictionaryEnumerator.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.GroupId">
+            <summary>
+            This read-only property returns the group ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.LocalCacheSize">
+            <summary>
+            Set this to a non-zero value to enable local caching of values to speed up read-only access
+            </summary>
+            <value>If set to zero, the default, the local cache will not be used and all values will be retrieved
+            from the database.</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.LocalCacheFlushCount">
+            <summary>
+            This read-only property returns the number of times the local cache was flushed because it filled up
+            </summary>
+            <value>This can help in figuring out an appropriate local cache size</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.CurrentLocalCacheCount">
+            <summary>
+            This read-only property returns the current number of local cache entries in use
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.IsDisposed">
+            <summary>
+            This read-only property returns whether or not the cache has been disposed of
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Simple dictionary constructor
+            </summary>
+            <param name="connectionString">The connection string to the SQL database</param>
+            <param name="tableName">The table name</param>
+            <param name="keyFieldName">The key field name</param>
+            <param name="valueFieldName">The value field name</param>
+            <remarks>Values in dictionaries that use this constructor are not grouped.  All values in the
+            table are returned.</remarks>
+            <overloads>There are two overloads for the constructor</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Grouped dictionary constructor
+            </summary>
+            <param name="connectionString">The connection string to the SQL database</param>
+            <param name="tableName">The table name</param>
+            <param name="groupId">The group ID field name</param>
+            <param name="keyFieldName">The key field name</param>
+            <param name="valueFieldName">The value field name</param>
+            <param name="groupIdFieldName">The group ID to use</param>
+            <remarks>Values in dictionaries that use this constructor are grouped using an additional field.
+            This allows multiple related dictionaries to reside within the same table.  Only values from the
+            dictionary identified by the group ID are returned.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Purge">
+            <summary>
+            This is used to purge all data from the dictionary
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Dispose">
+            <summary>
+            Dispose of the SQL dictionary
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Add(System.String,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Keys">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Remove(System.String)">
+            <inheritdoc />
+            <remarks>This method is not implemented</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.TryGetValue(System.String,`0@)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Values">
+            <inheritdoc />
+            <remarks>This property is not implemented</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Add(System.Collections.Generic.KeyValuePair{System.String,`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Clear">
+            <inheritdoc />
+            <remarks>This method is not implemented</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Contains(System.Collections.Generic.KeyValuePair{System.String,`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.CopyTo(System.Collections.Generic.KeyValuePair{System.String,`0}[],System.Int32)">
+            <inheritdoc />
+            <remarks>This method is not implemented</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.IsReadOnly">
+            <inheritdoc />
+            <value>Always returns false</value>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.Remove(System.Collections.Generic.KeyValuePair{System.String,`0})">
+            <inheritdoc />
+            <remarks>This method is not implemented</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary">
+            <summary>
+            This contains a collection of targets indexed by member ID stored in a <see cref="T:Sandcastle.Tools.BuildComponents.Targets.SqlDictionary`1"/>
+            </summary>
+            <remarks>The behavior of this dictionary is to return null if a target ID is not found and to replace
+            existing entries if a duplicate ID is added.  All targets are stored in a SQL database.  The
+            initial use will create the database slowing down initialization on first use.  Subsequent uses will not
+            need to recreate it.  The trade off is that it can use much less memory at the expense of some build
+            speed for each topic.  The speed difference is offset somewhat by the shorter initialization time.</remarks>
+            <threadsafety static="false" instance="false" />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.Xml.XPath.XPathNavigator,System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The build component that owns the dictionary.  This is useful for logging
+            messages during initialization.</param>
+            <param name="configuration">The target dictionary configuration</param>
+            <param name="connectionString">The connection string to use</param>
+            <param name="groupId">The group ID to use</param>
+            <param name="localCacheSize">The local cache size to use</param>
+            <param name="reload">True to reload the cache or false to leave it alone.  This is used to reload
+            project data so that it is always current.</param>
+            <returns>A target dictionary instance that uses a simple in-memory
+            <see cref="T:System.Collections.Generic.Dictionary`2"/> instance to store the targets.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.LoadTargetDictionary(System.Int32)">
+            <summary>
+            This is overridden to load the SQL dictionary in a thread-safe manner
+            </summary>
+            <param name="maxDegreeOfParallelism">This can be used to override the maximum degree of parallelism.
+            By default, it is -1 to allow as many threads as possible.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.ReportCacheStatistics">
+            <summary>
+            Report the cache usage for the build
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Add(System.String,Sandcastle.Tools.BuildComponents.Targets.Target)">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Keys">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.TryGetValue(System.String,Sandcastle.Tools.BuildComponents.Targets.Target@)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Item(System.String)">
+            <inheritdoc />
+            <returns>If not found, this implementation returns null.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target}[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SqlTargetDictionary.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary">
+            <summary>
+            This is a base class used for a collection of targets indexed by member ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.BuildComponent">
+            <summary>
+            This read-only property returns the build component that owns the target dictionary
+            </summary>
+            <value>This is useful for logging information during initialization</value>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.DictionaryId">
+            <summary>
+            This is used to get or set the target dictionary's unique ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.DirectoryPath">
+            <summary>
+            This is used to get or set the path to the target files
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.FilePattern">
+            <summary>
+            This is used to get or set the file pattern to use when searching for target files
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Recurse">
+            <summary>
+            This is used to get or set whether to recurse into subfolders of <see cref="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.DirectoryPath"/> when
+            loading target files.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.NamespaceFileFilter">
+            <summary>
+            This read-only property returns any optional namespace files used to filter what gets loaded
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.IsDisposed">
+            <summary>
+            This read-only property can be used to determine whether or not the target dictionary has been
+            disposed.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.#ctor(Sandcastle.Core.BuildAssembler.BuildComponent.BuildComponentCore,System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="component">The build component that owns the dictionary.  This is useful for logging
+            messages during initialization.</param>
+            <param name="configuration">The configuration used to create the target dictionary</param>
+            <remarks>The default implementation always creates a unique ID based on the directory path and file
+            pattern if an <c>id</c> attribute is not found in the configuration.  Using a common ID across
+            instances allows sharing of the target dictionary data store.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Finalize">
+            <summary>
+            This handles garbage collection to ensure proper disposal of the target dictionary if not done
+            explicitly with <see cref="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Dispose"/>.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the target dictionary
+            </summary>
+            <overloads>There are two overloads for this method</overloads>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Dispose(System.Boolean)">
+            <summary>
+            This can be overridden by derived classes to add their own disposal code if necessary.
+            </summary>
+            <param name="disposing">Pass true to dispose of the managed and unmanaged resources or false to just
+            dispose of the unmanaged resources.</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.LoadTargetDictionary(System.Int32)">
+            <summary>
+            This helper method can be called to find all target files and load them into the dictionary
+            </summary>
+            <param name="maxDegreeOfParallelism">This can be used to override the maximum degree of parallelism.
+            By default, it is -1 to allow as many threads as possible.</param>
+            <remarks>This method assumes that the dictionary is thread-safe and supports parallel loading of
+            target data.  If not, override this method to load the data synchronously.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.ReportCacheStatistics">
+            <summary>
+            This can be overridden in derived classes to report cache usage statistics after the build
+            </summary>
+            <remarks>The default implementation does nothing.  You can override this to provide information that
+            can help adjust the cache size to make it more efficient.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Add(System.String,Sandcastle.Tools.BuildComponents.Targets.Target)">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Keys">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Remove(System.String)">
+            <inheritdoc />
+            <remarks>This method is not implemented as targets are never removed</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.TryGetValue(System.String,Sandcastle.Tools.BuildComponents.Targets.Target@)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Item(System.String)">
+            <inheritdoc />
+            <returns>If not found, this implementation returns null.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>If the key already exists, the existing value is replaced</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target}[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.IsReadOnly">
+            <inheritdoc />
+            <value>This always returns false</value>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.Remove(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>This method is not implemented</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDictionary.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TargetDirectory">
+            <summary>
+            This represents a targets directory along with all the associated expressions used to find target
+            metadata files in it, and extract URLs and link text from those files using the
+            <see cref="T:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent"/>.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDirectory.#ctor(System.String,System.Xml.XPath.XPathExpression,System.Xml.XPath.XPathExpression,System.Xml.XPath.XPathExpression,Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="targetDir">The target directory</param>
+            <param name="urlExp">The URL expression</param>
+            <param name="textExp">The text (title) expression</param>
+            <param name="linkTextExp">The alternate link text expression</param>
+            <param name="typeOfLink">The link type</param>
+            <exception cref="T:System.ArgumentNullException">This is thrown if the directory, URL expression, or either
+            text expression is null.</exception>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetDirectory.GetTargetInfo(System.String)">
+            <summary>
+            Get target info for the specified file
+            </summary>
+            <param name="targetId">The target ID for which to get target info.  This is expected to be in the
+            form of a GUID.</param>
+            <returns>A <see cref="T:Sandcastle.Tools.BuildComponents.Targets.TargetInfo" /> object if found or null if not found</returns>
+            <remarks>The target ID is expected to be in the form of a GUID.  The target filename is expected to
+            be in the format <b>[GUID].cmp.xml</b>.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TargetDirectoryCollection">
+            <summary>
+            This class contains a set of <see cref="T:Sandcastle.Tools.BuildComponents.Targets.TargetDirectory"/> items used by
+            <see cref="T:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent" />.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetDirectoryCollection.Item(System.String)">
+            <summary>
+            This read-only indexer can be used to retrieve the target info for the specified target ID
+            </summary>
+            <param name="targetId">The target ID of the file to locate.  This is expected to be in the form of
+            a GUID.</param>
+            <returns>A <see cref="T:Sandcastle.Tools.BuildComponents.Targets.TargetInfo" /> object if found or null if not found.</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TargetInfo">
+            <summary>
+            This class is used to represent a resolved target containing all the information necessary to actually
+            write out the link by using the <see cref="T:Sandcastle.Tools.BuildComponents.ResolveConceptualLinksComponent"/>.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetInfo.Text">
+            <summary>
+            This read-only property is used to get the text
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetInfo.LinkType">
+            <summary>
+            This read-only property is used to get the link type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetInfo.Url">
+            <summary>
+            This read-only property is used to get the URL
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetInfo.#ctor(System.String,System.String,Sandcastle.Tools.BuildComponents.Targets.ConceptualLinkType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="targetUrl">The target URL</param>
+            <param name="targetText">The target's link text</param>
+            <param name="typeOfLink">The type of link</param>
+            <exception cref="T:System.ArgumentNullException">This is thrown if the target URL or text is null</exception>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary">
+            <summary>
+            This is a dictionary used to contain common target dictionaries with their associated link type
+            </summary>
+            <remarks>The behavior of this dictionary is to return null if a target ID is not found and to replace
+            existing entries if a duplicate ID is added.  The structure allows access to all reference link targets
+            within a set of multiple target dictionaries, each with a different reference link type.  The target
+            dictionary instances can be easily shared across multiple instances of the reference link components.</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Dispose">
+            <summary>
+            This implements the Dispose() interface to properly dispose of the target dictionaries
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Add(System.String,Sandcastle.Tools.BuildComponents.Targets.Target)">
+            <inheritdoc />
+            <remarks>This method is not implemented.  Use <see cref="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Add(Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType,Sandcastle.Tools.BuildComponents.Targets.TargetDictionary)"/>
+            to add target dictionaries and their associated reference link type</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.ContainsKey(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Keys">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Remove(System.String)">
+            <inheritdoc />
+            <remarks>This method is not implemented as targets are never removed</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.TryGetValue(System.String,Sandcastle.Tools.BuildComponents.Targets.Target@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.TryGetValue(System.String,Sandcastle.Tools.BuildComponents.Targets.Target@,Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType@)">
+            <summary>
+            This attempts to retrieve the item with the specified key, returning it along with the reference
+            link type with which it is associated.
+            </summary>
+            <param name="key">The item key to look up</param>
+            <param name="value">On return, this will contain the item value if found</param>
+            <param name="linkType">On return, this will contain the link type of the item if found</param>
+            <returns>True if the item was found, false if not</returns>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Values">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Item(System.String)">
+            <inheritdoc />
+            <returns>If not found, this implementation returns null.</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Add(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>This method is not implemented.  Use <see cref="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Add(Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType,Sandcastle.Tools.BuildComponents.Targets.TargetDictionary)"/>
+            to add target dictionaries and their associated reference link type</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Contains(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target}[],System.Int32)">
+            <inheritdoc />
+            <remarks>This method is not currently implemented</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.IsReadOnly">
+            <inheritdoc />
+            <value>This always returns false</value>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Remove(System.Collections.Generic.KeyValuePair{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <inheritdoc />
+            <remarks>This method is not implemented as targets are never removed</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.GetEnumerator">
+            <inheritdoc />
+            <remarks>This method is not currently implemented</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+            <remarks>This method is not currently implemented</remarks>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.NeedsMemberIdUrlResolver">
+            <summary>
+            This read-only property is used to determine if any of the target dictionaries require the
+            member ID URL resolver to look up links.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TargetTypeDictionary.Add(Sandcastle.Tools.BuildComponents.Targets.ReferenceLinkType,Sandcastle.Tools.BuildComponents.Targets.TargetDictionary)">
+            <summary>
+            Add a target type dictionary to the collection
+            </summary>
+            <param name="type">The reference link type to use for targets in the given dictionary</param>
+            <param name="dictionary">The target dictionary to add</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities">
+            <summary>
+            Logic for constructing references from code entity reference strings.  Anything that depends on the
+            specific form of the ID strings lives here.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities.CreateReference(System.String)">
+            <summary>
+            Create a reference
+            </summary>
+            <param name="api">The member ID for which to create a reference</param>
+            <returns>The reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities.CreateNamespaceReference(System.String)">
+            <summary>
+            Create a namespace reference
+            </summary>
+            <param name="api">The member ID for which to create a reference</param>
+            <returns>The namespace reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities.CreateTypeReference(System.String)">
+            <summary>
+            Create a type reference
+            </summary>
+            <param name="api">The member ID for which to create a reference</param>
+            <returns>The type reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities.CreateMemberReference(System.String)">
+            <summary>
+            Create a member reference
+            </summary>
+            <param name="api">The member ID for which to create a reference</param>
+            <returns>The member reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities.SetGenericContext(System.String)">
+            <summary>
+            Set the generic context
+            </summary>
+            <param name="codeEntityReference">The member ID for which to set the context</param>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TextReferenceUtilities.GenericContext">
+            <summary>
+            This read-only property returns the generic context
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities">
+            <summary>
+            The logic to construct Target and Reference objects from XML reflection data.  Anything that depends on
+            specifics of the XML reflection data format lives here.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.ContainerExpression">
+            <summary>
+            This is used to get or set the container expression
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.EnumerateTargets(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is used to enumerate targets
+            </summary>
+            <param name="topicsNode">The topics node from which to get the target information</param>
+            <returns>An enumerable list of targets</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateTarget(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a target
+            </summary>
+            <param name="topic">The topic from which to get the target information</param>
+            <returns>The target</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateMemberTarget(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a member target
+            </summary>
+            <param name="api">The node from which to get the target information</param>
+            <returns>The member target</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateReference(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a reference
+            </summary>
+            <param name="node">The node from which to get the target information</param>
+            <returns>The reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateNamespaceReference(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a namespace reference
+            </summary>
+            <param name="namespaceElement">The namespace element from which to get the target information</param>
+            <returns>The namespace reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateTypeReference(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a type reference
+            </summary>
+            <param name="node">The node from which to get the target information</param>
+            <returns>The type reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateSimpleTypeReference(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a simple type reference
+            </summary>
+            <param name="node">The node from which to get the target information</param>
+            <returns>The simple type reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateMemberReference(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create a member reference
+            </summary>
+            <param name="node">The node from which to get the target information</param>
+            <returns>The member reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.XmlTargetDictionaryUtilities.CreateExtensionMethodReference(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Create an object to store the information to generate the display string for an extension method
+            </summary>
+            <param name="node">xml node containing the extension method data</param>
+            <returns>The extension method reference</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Transform">
+            <summary>
+            This class is used to contain information for an XSLT transformation
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Transform.Xslt">
+            <summary>
+            This read-only property returns the compiled XSL transformation
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Transform.Arguments">
+            <summary>
+            This read-only property returns a dictionary containing the XSL transformation arguments list values
+            </summary>
+            <remarks>Arguments can be added to this to pass them to them to the transformation when it is
+            executed.
+            
+            <note type="important">An argument called <c>key</c> is automatically added to the list when each
+            topic is transformed.  It will contain the current topic's key.</note>
+            </remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Transform.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="file">The path to the XSLT transformation file</param>
+            <remarks>The transforms presumably come from a trusted source so scripting and the document function
+            are enabled in them.</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.TransformComponent">
+            <summary>
+            This build component is used to transform the intermediate topic to its final form such as an HTML
+            document.
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.TransformComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.TransformComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.TransformComponent.Transformations">
+            <summary>
+            This read-only property returns an enumerable list of XSL transformations that will be applied to
+            the topics.
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.TransformComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.TransformComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.TransformComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <summary>
+            This is overridden to apply the XSL transformations to the document
+            </summary>
+            <param name="document">The document to transform</param>
+            <param name="key">The topic key</param>
+            <remarks><note type="important">An argument called <c>key</c> is automatically added to the argument
+            list when each topic is transformed.  It will contain the current topic's key.</note></remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.TransformedTopicEventArgs">
+            <summary>
+            This is used by the <see cref="T:Sandcastle.Tools.BuildComponents.TransformComponent"/> to indicate that it has finished transforming the
+            given topic.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.TransformedTopicEventArgs.Key">
+            <summary>
+            This read-only property returns the topic key
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.TransformedTopicEventArgs.Document">
+            <summary>
+            This read-only property returns the transformed topic document
+            </summary>
+            <remarks>Event handlers can further modify the topic's XML as needed</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.TransformedTopicEventArgs.#ctor(System.String,System.Xml.XmlDocument)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="key">The transformed topic key</param>
+            <param name="document">The transformed topic document</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.TransformingTopicEventArgs">
+            <summary>
+            This is used by the <see cref="T:Sandcastle.Tools.BuildComponents.TransformComponent"/> to indicate that it is about to transform the
+            given topic.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.TransformingTopicEventArgs.Key">
+            <summary>
+            This read-only property returns the topic key
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.TransformingTopicEventArgs.Document">
+            <summary>
+            This read-only property returns the topic document that will be transformed
+            </summary>
+            <remarks>Event handlers can modify the topic's XML as needed prior to transformation</remarks>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.TransformingTopicEventArgs.#ctor(System.String,System.Xml.XmlDocument)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="key">The transformed topic key</param>
+            <param name="document">The transformed topic document</param>
+        </member>
+        <member name="T:SandcastleBuilder.Components.ESentCopyFromIndexComponent">
+            <summary>
+            This is a version of the <c>CopyFromIndexComponent</c> that stores the index data in one or more
+            persistent ESENT databases.
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentReflectionIndexDataComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used for reflection index data
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentReflectionIndexDataComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentReflectionIndexDataComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentReflectionIndexDataComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="T:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentCommentsIndexDataComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used for comments index data
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentCommentsIndexDataComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentCommentsIndexDataComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:SandcastleBuilder.Components.ESentCopyFromIndexComponent.ESentCommentsIndexDataComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentCopyFromIndexComponent.CreateIndex(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="T:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent">
+            <summary>
+            This is a version of the <c>ResolveReferenceLinksComponent</c> that stores the member ID URLs and the
+            framework targets in persistent ESENT databases.
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.ESentResolveReferenceLinksComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used to resolve reference links
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.ESentResolveReferenceLinksComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.ESentResolveReferenceLinksComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.ESentResolveReferenceLinksComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.CreateMemberIdResolver(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is overridden to allow use of an ESENT backed member ID URL cache
+            </summary>
+            <param name="configuration">The component configuration</param>
+            <returns>A member ID URL resolver instance</returns>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.CreateTargetDictionary(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is overridden to create a target dictionary that utilizes an ESENT database for persistence
+            </summary>
+            <param name="configuration">The configuration element for the target dictionary</param>
+            <returns>A simple dictionary if no <c>cachePath</c> attribute is found or an ESENT backed target
+            dictionary if the attribute is found.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.Components.ESentResolveReferenceLinksComponent.UpdateUrlCache">
+            <summary>
+            This is overridden to report the persistent cache information
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.Components.MultiFormatOutputComponent">
+            <summary>
+            This build component is used to execute one or more sets of build components each based on a specific
+            help file output format.
+            </summary>
+            <remarks>One or more components can be executed based on a specified list of one or more help file output
+            formats.  Only the components related to the requested set of format types will be executed.</remarks>
+            <example>
+            <code language="xml" title="Example Configuration"
+                source="..\..\SHFB\Source\PresentationStyles\VS2013\Configuration\BuildAssembler.config"
+                region="Multi-format output component" />
+            </example>
+        </member>
+        <member name="T:SandcastleBuilder.Components.MultiFormatOutputComponent.Factory">
+            <summary>
+            This is used to create a new instance of the build component
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.MultiFormatOutputComponent.Factory.Create">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.MultiFormatOutputComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="P:SandcastleBuilder.Components.MultiFormatOutputComponent.GroupId">
+            <inheritdoc />
+            <remarks>This sets a unique group ID for each format</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.Components.MultiFormatOutputComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.MultiFormatOutputComponent.Apply(System.Xml.XmlDocument,System.String)">
+            <summary>
+            This is implemented to execute each set of components for the requested output formats.
+            </summary>
+            <param name="document">The XML document with which to work.</param>
+            <param name="key">The key (member name) of the item being documented.</param>
+        </member>
+        <member name="M:SandcastleBuilder.Components.MultiFormatOutputComponent.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:SandcastleBuilder.Components.SqlCopyFromIndexComponent">
+            <summary>
+            This is a version of the <c>CopyFromIndexComponent</c> that stores the index data in a persistent SQL
+            database.
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlReflectionIndexDataComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used for reflection index data
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlReflectionIndexDataComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlReflectionIndexDataComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlReflectionIndexDataComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="T:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlCommentsIndexDataComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used for comments index data
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlCommentsIndexDataComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlCommentsIndexDataComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:SandcastleBuilder.Components.SqlCopyFromIndexComponent.SqlCommentsIndexDataComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlCopyFromIndexComponent.CreateIndex(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="T:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent">
+            <summary>
+            This is a version of the <c>ResolveReferenceLinksComponent</c> that stores the member ID URLs and the
+            framework targets in persistent SQL databases.
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.SqlResolveReferenceLinksComponentFactory">
+            <summary>
+            This is used to create a new instance of the build component used to resolve reference links
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.SqlResolveReferenceLinksComponentFactory.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.SqlResolveReferenceLinksComponentFactory.Create">
+            <inheritdoc />
+        </member>
+        <member name="P:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.SqlResolveReferenceLinksComponentFactory.DefaultConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.#ctor(Sandcastle.Core.BuildAssembler.BuildAssemblerCore)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="buildAssembler">A reference to the build assembler</param>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.Initialize(System.Xml.XPath.XPathNavigator)">
+            <inheritdoc />
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.CreateMemberIdResolver(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is overridden to allow use of an SQL backed member ID URL cache
+            </summary>
+            <param name="configuration">The component configuration</param>
+            <returns>A member ID URL resolver instance</returns>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.CreateTargetDictionary(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            This is overridden to create a target dictionary that utilizes an SQL database for persistence
+            </summary>
+            <param name="configuration">The configuration element for the target dictionary</param>
+            <returns>A simple dictionary if no <c>connectionString</c> attribute is found or a SQL backed target
+            dictionary if the attribute is found.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.Components.SqlResolveReferenceLinksComponent.UpdateUrlCache">
+            <summary>
+            This is overridden to report the persistent cache information
+            </summary>
+        </member>
+    </members>
+</doc>

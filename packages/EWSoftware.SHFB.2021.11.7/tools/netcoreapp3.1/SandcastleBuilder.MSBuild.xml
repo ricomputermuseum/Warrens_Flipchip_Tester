@@ -1,0 +1,626 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SandcastleBuilder.MSBuild</name>
+    </assembly>
+    <members>
+        <member name="T:SandcastleBuilder.MSBuild.Build1xHelpFile">
+            <summary>
+            This task is used to run HHC.EXE which is used to compile a Help 1 (CHM) help file
+            </summary>
+            <remarks>Support is provided for wrapping the tool in a call to an application such as SBAppLocale.exe to
+            workaround encoding issues with the Help 1 compiler.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.ToolName">
+            <summary>
+            This read-only property returns the tool name (HHC.EXE or the value of <see cref="P:SandcastleBuilder.MSBuild.Build1xHelpFile.LocalizeApp" /> if
+            specified).
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.StandardErrorLoggingImportance">
+            <summary>
+            This is overridden to force all standard error info to be logged
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.StandardOutputLoggingImportance">
+            <summary>
+            This is overridden to force all standard output info to be logged
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.WorkingFolder">
+            <summary>
+            This is used to pass in the working folder where the files are located
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.HelpCompilerFolder">
+            <summary>
+            This is used to pass in the path to the help compiler
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.HelpProjectName">
+            <summary>
+            This is used to pass in the help project filename
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.LocalizeApp">
+            <summary>
+            This is used to pass in the name of the application to use as the localization wrapper
+            </summary>
+            <remarks>This is optional.  If specified, it will be used to run the help compiler to work around
+            encoding issues.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Build1xHelpFile.LanguageId">
+            <summary>
+            This is used to get or set the language ID for the localization tool (<see cref="P:SandcastleBuilder.MSBuild.Build1xHelpFile.LocalizeApp" />)
+            </summary>
+            <remarks>This is optional.  If not specified, it defaults to 1033.  It is ignored if
+            <see cref="P:SandcastleBuilder.MSBuild.Build1xHelpFile.LocalizeApp" /> is not set.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.Build1xHelpFile.ValidateParameters">
+            <summary>
+            Validate the parameters
+            </summary>
+            <returns>True if the parameters are valid, false if not</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.Build1xHelpFile.GenerateFullPathToTool">
+            <summary>
+            This returns the full path to the tool
+            </summary>
+            <returns>The full path to the tool</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.Build1xHelpFile.GenerateCommandLineCommands">
+            <summary>
+            Generate the command line parameters
+            </summary>
+            <returns>The command line parameters</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.Build1xHelpFile.Execute">
+            <summary>
+            This is overridden to set the working folder before executing the task and to invert the result
+            returned from the help compiler.
+            </summary>
+            <returns>True if successful or false on failure</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.Build1xHelpFile.HandleTaskExecutionErrors">
+            <summary>
+            This is overridden to invert the result of the HHC exit code
+            </summary>
+            <returns>True on success, false on failure.  HHC is backwards and returns 0 on failures and 1 on
+            success.  We invert the result to be consistent with other tasks.</returns>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.BuildHelp">
+            <summary>
+            This task is used to build help file output using the Sandcastle Help File Builder.
+            </summary>
+            <remarks>All messages from this task are logged with a high priority since it will run for a long time
+            and we need to see the progress messages to know it's doing something.  If set to Normal and ran from
+            within Visual Studio, it won't show the progress messages when the logging options are set to Minimal.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.ProjectFile">
+            <summary>
+            This is used to pass in the project filename
+            </summary>
+            <remarks>Since <see cref="T:SandcastleBuilder.Utils.SandcastleProject" /> already wraps the MSBuild project, it seemed
+            redundant to define each and every property on this task and map them to the project properties.  As
+            such, this task will attempt to use the executing project to create the Sandcastle project instance.
+            If that fails or <see cref="P:SandcastleBuilder.MSBuild.BuildHelp.AlwaysLoadProject" /> is true, this file will be loaded instead.  The
+            downside is that property overrides on the command line will be ignored.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.Configuration">
+            <summary>
+            This is used to pass in the configuration to use for the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.Platform">
+            <summary>
+            This is used to pass in the platform to use for the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.OutDir">
+            <summary>
+            This is used to specify the output directory containing the build output for solution and project
+            documentation sources when using Team Build.
+            </summary>
+            <value>This property is optional.  If not specified, the default output path in project file
+            documentation sources will be used.</value>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.Verbose">
+            <summary>
+            This is used to set or get the output logging verbosity flag
+            </summary>
+            <value>This property is optional.  If set to false (the default), only build steps are written to the
+            task log.  If set to true, all output from the build process is written to the task log.</value>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.DumpLogOnFailure">
+            <summary>
+            This is used to set or get whether the log file is dumped to the task log if the help file project
+            build fails.
+            </summary>
+            <value>This property is optional.  If set to false (the default), the log is not dumped if the build
+            fails.  If set to true, all output from the build process is written to the task log if the build
+            fails.</value>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.AlwaysLoadProject">
+            <summary>
+            This is used to specify whether or not to load the specified <see cref="P:SandcastleBuilder.MSBuild.BuildHelp.ProjectFile" /> rather than
+            use the executing project.
+            </summary>
+            <value>This property is optional.  If set to false, the default, the executing project is used as the
+            Sandcastle project to build.  If set to true, the specified <see cref="P:SandcastleBuilder.MSBuild.BuildHelp.ProjectFile" /> is loaded.
+            In such cases, command line property overrides are ignored.</value>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.Properties">
+            <summary>
+            <para>Optional String parameter.</para>
+            <para>A semicolon-delimited list of property name/value pairs that override properties read from the
+            <see cref="P:SandcastleBuilder.MSBuild.BuildHelp.ProjectFile" />.</para>
+            </summary>
+            <remarks>
+            <para>Use this to provide dynamic properties, that are created during build. When building inside
+            Visual Studio, only static properties are available.</para>
+            <para>This could for example be used if there are custom MSBuild targets that initialize properties
+            with version information.</para>
+            </remarks>
+            <example>Properties="Version=$(SemVersion);Optimize=$(Optimize)"</example>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.Help1Files">
+            <summary>
+            This is used to return a list of the HTML Help 1 (chm) files that resulted from the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.HelpViewerFiles">
+            <summary>
+            This is used to return a list of the MS Help Viewer (mshc) files that resulted from the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.WebsiteFiles">
+            <summary>
+            This is used to return a list of the website files that resulted from the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.OpenXmlFiles">
+            <summary>
+            This is used to return a list of the Open XML (docx) files that resulted from the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.MarkdownFiles">
+            <summary>
+            This is used to return a list of the Markdown (md) files that resulted from the build
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelp.AllHelpFiles">
+            <summary>
+            This is used to return a list of all files that resulted from the build (all help formats)
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelp.Execute">
+            <summary>
+            This is used to execute the task and perform the build
+            </summary>
+            <returns>True on success or false on failure.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelp.GetCurrentProjectInstance">
+            <summary>
+            This is used to obtain project instance for the project that is currently being built
+            </summary>
+            <returns>The project instance for the current project if possible or null if it could not be
+            obtained.</returns>
+            <remarks>When you run MSBuild.exe, it does not store the projects in the global project collection.
+            We could build the project without it but we lose the ability to use command line overrides and
+            changes to user-defined properties.  As such we need to resort to reflection to get the current
+            project information.  This is easier than in past MSBuild versions though.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelp.Cancel">
+            <summary>
+            Cancel the build
+            </summary>
+            <remarks>The build will be cancelled as soon as the next message arrives from the build process</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelp.Report(SandcastleBuilder.Utils.BuildEngine.BuildProgressEventArgs)">
+            <summary>
+            This is called by the build process to report build progress
+            </summary>
+            <param name="value">The event arguments</param>
+            <remarks>Since the build is synchronous in this task, we need to implement the interface and report
+            progress synchronously as well or the final few messages can get lost and it looks like the build
+            failed.</remarks>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.BuildHelpViewerFile">
+            <summary>
+            This task is used to compress the help content into a Microsoft Help Container (a ZIP file with a .mshc
+            extension).
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelpViewerFile.WorkingFolder">
+            <summary>
+            This is used to pass in the working folder where the files to compress are located
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelpViewerFile.OutputFolder">
+            <summary>
+            This is used to pass in the output folder where the compressed output file is stored
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildHelpViewerFile.HtmlHelpName">
+            <summary>
+            This is used to pass in the name of the help file (no path or extension)
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelpViewerFile.Execute">
+            <summary>
+            This is used to execute the task and perform the build
+            </summary>
+            <returns>True on success or false on failure.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelpViewerFile.CompressFiles">
+            <summary>
+            This is used to handle file compression as a background task
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildHelpViewerFile.ReportProgress(System.Int32)">
+            <summary>
+            Report progress as the content is compressed
+            </summary>
+            <param name="value">The number of files added to the archive so far</param>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.BuildOpenXmlFile">
+            <summary>
+            This task is used to finish up creation of the Open XML file parts and compress the help content into an
+            Open XML document (a ZIP file with a .docx extension).
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildOpenXmlFile.WorkingFolder">
+            <summary>
+            This is used to pass in the working folder where the files to compress are located
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildOpenXmlFile.OutputFolder">
+            <summary>
+            This is used to pass in the output folder where the compressed output file is stored
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildOpenXmlFile.HelpFilename">
+            <summary>
+            This is used to pass in the name of the help file document (no path or extension)
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.BuildOpenXmlFile.IndentXml">
+            <summary>
+            This is used for debugging.  Set it to true to indent the XML, false to not indent it
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.Execute">
+            <summary>
+            This is used to execute the task and perform the build
+            </summary>
+            <returns>True on success or false on failure.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.WriteTopic(System.Xml.XmlWriter,System.Xml.XmlReader)">
+            <summary>
+            This is used to write out the body content of a topic to the main document part
+            </summary>
+            <param name="writer">The writer for the main document part</param>
+            <param name="reader">The reader for the topic body content</param>
+            <remarks>Using a reader prevents unnecessary namespaces from appearing on the body content elements
+            which happens if we convert the XElement content to a string and write it out as raw content.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ApplyChanges(System.Xml.Linq.XDocument,System.String)">
+            <summary>
+            Apply the clean up tasks to the given document
+            </summary>
+            <param name="document">The document to clean up</param>
+            <param name="key">The topic key</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.SaveRelationships">
+            <summary>
+            Save the external link and image relationship information
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.SaveNumberingStyles">
+            <summary>
+            Save list numbering styles
+            </summary>
+            <remarks>Numbering styles are rather complex.  To keep it as simple as possible, we use one common
+            abstract definition and use separate numbering definitions with level overrides to apply "ordered"
+            or "no bullet" styles to the lists that use the same style at the same level.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.AddContainingParagraphs(System.Xml.Linq.XDocument)">
+            <summary>
+            Add containing paragraphs for run elements that don't have one
+            </summary>
+            <param name="document">The document in which to add containing paragraphs</param>
+            <remarks>MAML and XML comments may not be well formed such that all text runs end up inside a
+            paragraph.  While HTML is very forgiving in that respect, Open XML is not and it will cause the
+            document to appear to be corrupted.  This attempts to fix up such ill-formed content.  It is not
+            perfect so there may still be issues.  Additional fix ups can be added as they are found but this is
+            no substitute for using well-formed content in the first place.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.CheckForContainingParagraph(System.Collections.Generic.IEnumerable{System.Xml.Linq.XElement})">
+            <summary>
+            Check for a containing paragraph on each of the given elements
+            </summary>
+            <param name="elements">An enumerable list of elements to check</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.AddBlankCellParagraphs(System.Xml.Linq.XDocument)">
+            <summary>
+            Add empty paragraphs to empty cells
+            </summary>
+            <param name="document">The document in which to add paragraphs to empty cells</param>
+            <remarks>Table cells must contain a paragraph element</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ConvertHtmlLineBreaks(System.Xml.Linq.XDocument)">
+            <summary>
+            Convert HTML line breaks to Open XML line breaks
+            </summary>
+            <param name="document">The document in which to apply the fix-ups</param>
+            <remarks>HTML line breaks can appear in content items and the transformations where it may not be
+            convenient or possible to insert the containing run element.  This fixes them up so that they are
+            correct.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.WrapStrayElementNodes(System.Xml.Linq.XDocument)">
+            <summary>
+            Wrap stray text nodes in text elements and, when necessary, run elements
+            </summary>
+            <param name="document">The document in which to wrap stray text nodes</param>
+            <remarks>Stray text nodes can occur when resolving shared content items.  We need to ensure that
+            all text nodes are within a text element within a run to ensure that the document does not appear to
+            be corrupted.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.CleanupTables(System.Xml.Linq.XDocument)">
+            <summary>
+            This cleans up table elements so that they include the correct w:tblGrid
+            element and that they are not wrapped within a w:p element.
+            </summary>
+            <param name="document">The document in which to clean up any tables</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.InsertLineBreaks(System.Xml.Linq.XDocument)">
+            <summary>
+            Insert line break elements where needed to preserve text formatting
+            </summary>
+            <param name="document">The document in which to insert line breaks</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.RemoveInvalidSpans(System.Xml.Linq.XDocument)">
+            <summary>
+            Remove spans without a class attribute that cannot be used for formatting
+            </summary>
+            <param name="document">The document in which to remove invalid spans</param>
+            <remarks>The XSL transformation could do this but it wouldn't necessarily cover third party build
+            components which could introduce invalid spans so we'll take care of them all here.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ConvertStyleSpans(System.Xml.Linq.XDocument)">
+            <summary>
+            Convert style spans to Open XML run formatting
+            </summary>
+            <param name="document">The document in which to convert the style spans</param>
+            <remarks>Nested spans result in run formatting that is accumulated in each run in the nested set of
+            spans.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ApplySpanFormatting(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Apply the formatting from a span including all nested spans to each run contained within it
+            </summary>
+            <param name="span">The root span from which to start applying formatting</param>
+            <param name="runProps">The run properties in which to accumulate formatting</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ReorderChildren(System.Xml.Linq.XElement,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Reorders an elements' children by a specific ordering.
+            </summary>
+            <param name="element">Element whose children should be in a specific order</param>
+            <param name="orderings">The specific order of child element, by local name</param>
+            <returns><paramref name="element" /> with its children reordered.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ReformatBookmarkNames(System.Xml.Linq.XDocument,System.String)">
+            <summary>
+            Reformat the bookmark names to prefix them with the topic key so that they are unique and do not
+            contain any invalid characters.
+            </summary>
+            <param name="document">The document in which to reformat the bookmark names</param>
+            <param name="key">The document key</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ConvertHtmlAnchors(System.Xml.Linq.XDocument,System.String)">
+            <summary>
+            Convert HTML anchor elements to Open XML hyperlink elements
+            </summary>
+            <param name="document">The document in which to convert the HTML anchor elements</param>
+            <param name="key">The document key</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ConvertHtmlImages(System.Xml.Linq.XDocument)">
+            <summary>
+            Convert HTML image elements to Open XML drawing elements
+            </summary>
+            <param name="document">The document in which to convert the image elements</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.DetermineImageSize(System.String,System.Int64@,System.Int64@)">
+            <summary>
+            This is used to determine the image size in English Metric Units
+            </summary>
+            <param name="imageFilename">The image filename</param>
+            <param name="cx">On return, this will contain the width of the image in English Metric Units</param>
+            <param name="cy">On return, this will contain the height of the image in English Metric Units</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ConvertHtmlLists(System.Xml.Linq.XDocument)">
+            <summary>
+            Convert HTML list elements to Open XML list formatting elements and track each unique list style
+            </summary>
+            <param name="document">The document in which to convert the HTML anchor elements</param>
+            <remarks>Open XML lists are not like HTML lists.  The list items have formatting applied that refers
+            to a numbering properties element stored in a separate part.  The numbering properties refer to
+            an abstract numbering definition which can be shared amongst many numbering properties elements which
+            may override levels within the abstract definition.  Also Open XML only supports up to nine levels
+            of nested lists.</remarks>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ApplyListFormatting(System.Xml.Linq.XElement,System.Int32)">
+            <summary>
+            This applies formatting to each nested list and list item
+            </summary>
+            <param name="list">The list to process</param>
+            <param name="level">The level of this list</param>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.GenerateFileList">
+            <summary>
+            This is used to generate the list of files needed for the document.  It also updates the content
+            types file with any missing content types.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.CompressHelpContent">
+            <summary>
+            This is used to compress the help content into the Open XML document file
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.CompressFiles">
+            <summary>
+            This is used to handle file compression as a background task
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.BuildOpenXmlFile.ReportProgress(System.Int32)">
+            <summary>
+            Report progress as the content is compressed
+            </summary>
+            <param name="value">The number of files added to the archive so far</param>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.CleanHelp">
+            <summary>
+            This task is used to clean (remove) help file output from the last
+            build.
+            </summary>
+            <remarks>All messages from this task are logged with a high priority.  If set to Normal and ran from
+            within Visual Studio, it won't show the progress messages when the logging options are set to Minimal.</remarks>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.CleanHelp.ProjectFile">
+            <summary>
+            This is used to pass in the project filename
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.CleanHelp.OutputPath">
+            <summary>
+            This is used to pass in the output path that needs to be cleaned
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.CleanHelp.WorkingPath">
+            <summary>
+            This is used to pass in the optional working path that needs to be
+            cleaned.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.CleanHelp.LogFileLocation">
+            <summary>
+            This is used to pass in the optional log filename that needs
+            to be cleaned.
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.CleanHelp.Execute">
+            <summary>
+            This is used to execute the task and clean the output folder
+            </summary>
+            <returns>True on success or false on failure.</returns>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.GenerateMarkdownContent">
+            <summary>
+            This task is used to finish up creation of the markdown content and copy it to the output folder
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.GenerateMarkdownContent.WorkingFolder">
+            <summary>
+            This is used to pass in the working folder where the files to parse are located
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.GenerateMarkdownContent.OutputFolder">
+            <summary>
+            This is used to pass in the output folder where the generated content is stored
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.GenerateMarkdownContent.DefaultTopic">
+            <summary>
+            This is used to pass in the default topic name.  If no Home.md file is found and a value is
+            specified, this file will be copied to create Home.md.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.GenerateMarkdownContent.AppendMarkdownFileExtensionsToUrls">
+            <summary>
+            This is used to pass in whether or not to append extensions to the sidebar topic links
+            </summary>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.GenerateMarkdownContent.Execute">
+            <summary>
+            This is used to execute the task and perform the build
+            </summary>
+            <returns>True on success or false on failure.</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.GenerateMarkdownContent.ApplyChanges(System.String,System.Xml.Linq.XDocument)">
+            <summary>
+            This applies the changes needed to convert the XML to a markdown topic file
+            </summary>
+            <param name="key">The topic key</param>
+            <param name="topic">The topic to which the changes are applied</param>
+            <returns>The page title if one could be found</returns>
+        </member>
+        <member name="M:SandcastleBuilder.MSBuild.GenerateMarkdownContent.RecursiveCopy(System.String,System.String,System.Int32@)">
+            <summary>
+            This copies files from the specified source folder to the specified destination folder.  If any
+            subfolders are found below the source folder, the subfolders are also copied recursively.
+            </summary>
+            <param name="sourcePath">The source path from which to copy</param>
+            <param name="destPath">The destination path to which to copy</param>
+            <param name="fileCount">The file count used for logging progress</param>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.NumberingStyle">
+            <summary>
+            This is used to track the custom numbering styles found during the step that converts the list elements
+            to Open XML lists.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.NumberingStyle.Id">
+            <summary>
+            The ID for the numbering style
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.NumberingStyle.Style">
+            <summary>
+            The numbering style
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.NumberingStyle.Level">
+            <summary>
+            The numbering level to override
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.NumberingStyle.Start">
+            <summary>
+            The starting number for ordered lists
+            </summary>
+        </member>
+        <member name="T:SandcastleBuilder.MSBuild.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SandcastleBuilder.MSBuild.Properties.Resources.MimeTypes">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+            &lt;!-- Run the following script in LINQPad to regenerate the content below:
+            XElement root = new XElement(&quot;mimeTypes&quot;);
+            
+            foreach (string key in Registry.ClassesRoot.GetSubKeyNames().Where(k =&gt; k[0] == &apos;.&apos;))
+            {
+            	using (RegistryKey regKey = Registry.ClassesRoot.OpenSubKey(key))
+            	{
+            		string mimeType = regKey.GetValue(&quot;Content Type&quot;)?.ToString();
+            		
+            		if (!String.IsNullOrWhiteSpace(mimeType))
+            			root.Add(new XElement(&quot;mimeType&quot;, new XAttribute(&quot;extension&quot;, key), ne [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+    </members>
+</doc>

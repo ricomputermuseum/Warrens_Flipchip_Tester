@@ -1,0 +1,591 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sandcastle.Tools.BuildComponents.Targets</name>
+    </assembly>
+    <members>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ArrayTypeReference">
+            <summary>
+            This represents an array type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArrayTypeReference.ElementType">
+            <summary>
+            This read-only property returns the element type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ArrayTypeReference.Rank">
+            <summary>
+            This read-only property returns the array rank
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ArrayTypeReference.#ctor(Sandcastle.Tools.BuildComponents.Targets.TypeReference,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="elementType">The element type</param>
+            <param name="rank">The array rank</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ConstructorTarget">
+            <summary>
+            This represents a constructor target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ConstructorTarget.Parameters">
+            <summary>
+            This read-only property returns an enumerable list of parameters if any
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ConstructorTarget.#ctor(System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.Parameter})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parameters">The list of constructor parameters if any</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.EnumerationTarget">
+            <summary>
+            This represents an enumeration target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.EnumerationTarget.Elements">
+            <summary>
+            This read-only property returns a list of enumeration elements
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.EnumerationTarget.#ctor(System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.MemberTarget})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="elements">The list of enumeration members</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.EnumerationTarget.Add(System.Collections.Generic.IDictionary{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <summary>
+            This is overridden to add the enumeration along with all of its elements to the target dictionary
+            </summary>
+            <param name="targets">The target dictionary to which the enumeration and its elements are added</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.EventTarget">
+            <summary>
+            This represents an event target
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ExtensionMethodReference">
+            <summary>
+            This represents and extension method reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ExtensionMethodReference.Name">
+            <summary>
+            This read-only property returns the extension method name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ExtensionMethodReference.Parameters">
+            <summary>
+            This read-only property returns the extension method parameters
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ExtensionMethodReference.TemplateArgs">
+            <summary>
+            This read-only property returns the template arguments if any
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ExtensionMethodReference.#ctor(System.String,System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.Parameter},System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.TypeReference})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="methodName">The extension method name</param>
+            <param name="parameters">The extension method parameters</param>
+            <param name="templateArgs">The extension method template arguments if any</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference">
+            <summary>
+            This represents an indexed template type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference.TemplateId">
+            <summary>
+            This read-only property returns the template ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference.Index">
+            <summary>
+            This read-only property returns the index
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="templateId">The template ID</param>
+            <param name="index">The index</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference.GetHashCode">
+            <summary>
+            This is overridden to support equality comparisons
+            </summary>
+            <returns>The hash code for the indexed template type reference</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.IndexedTemplateTypeReference.Equals(System.Object)">
+            <summary>
+            This is overridden to allow comparison of to indexed template type references for equality
+            </summary>
+            <param name="obj">The instance to compare</param>
+            <returns>True if equal, false if not</returns>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.InvalidReference">
+            <summary>
+            This represents an invalid reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.InvalidReference.Id">
+            <summary>
+            This read-only property returns the ID
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.InvalidReference.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">The invalid reference ID</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.MemberReference">
+            <summary>
+            This is the base class for member references
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.MemberTarget">
+            <summary>
+            This represents a member target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MemberTarget.Name">
+            <summary>
+            This is used to get or set the name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MemberTarget.ContainingType">
+            <summary>
+            This is used to get or set the containing type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MemberTarget.OverloadId">
+            <summary>
+            This is used to get or set the overload ID if applicable
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.MethodTarget">
+            <summary>
+            This represents a method target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MethodTarget.Parameters">
+            <summary>
+            This read-only property returns an enumerable list of parameters if any
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MethodTarget.ReturnType">
+            <summary>
+            This read-only property returns the return type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MethodTarget.Templates">
+            <summary>
+            This is used to get or set an enumerable list of the template types if any
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MethodTarget.TemplateArgs">
+            <summary>
+            This is used to get or set specialized template arguments if any (used with extension methods)
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.MethodTarget.#ctor(System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.Parameter},Sandcastle.Tools.BuildComponents.Targets.TypeReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parameters">Method parameters if any</param>
+            <param name="returnType">The method return type</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.MethodTemplateTypeReference">
+            <summary>
+            This represents a method template type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MethodTemplateTypeReference.TemplateMethod">
+            <summary>
+            This read-only property returns the template method
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.MethodTemplateTypeReference.Position">
+            <summary>
+            This read only property returns the position
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.MethodTemplateTypeReference.#ctor(Sandcastle.Tools.BuildComponents.Targets.MemberReference,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="template">The template method</param>
+            <param name="position">The position</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.NamedTemplateTypeReference">
+            <summary>
+            This represents a named template type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.NamedTemplateTypeReference.Name">
+            <summary>
+            This read-only property returns the name
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.NamedTemplateTypeReference.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">The template type reference name</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.NamespaceReference">
+            <summary>
+            This represents a namespace reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.NamespaceReference.Id">
+            <summary>
+            This read-only property returns the namespace ID
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.NamespaceReference.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">The namespace ID</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.NamespaceTarget">
+            <summary>
+            This represents a namespace target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.NamespaceTarget.Name">
+            <summary>
+            This read-only property returns the namespace name
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.NamespaceTarget.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">The namespace name</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.Parameter">
+            <summary>
+            This represents a parameter
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Parameter.Name">
+            <summary>
+            This read-only property returns the parameter name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Parameter.ParameterType">
+            <summary>
+            This read-only property returns the parameter type
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.Parameter.#ctor(System.String,Sandcastle.Tools.BuildComponents.Targets.TypeReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">The parameter name</param>
+            <param name="type">The parameter type</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.PointerTypeReference">
+            <summary>
+            This represents a pointer type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.PointerTypeReference.PointedToType">
+            <summary>
+            This read-only property returns the pointed to type
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.PointerTypeReference.#ctor(Sandcastle.Tools.BuildComponents.Targets.TypeReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pointedToType">The pointed to type</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ProcedureTarget">
+            <summary>
+            This represents a procedure target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ProcedureTarget.IsConversionOperator">
+            <summary>
+            This is used to get or set whether or not the target is a conversion operator
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ProcedureTarget.ExplicitlyImplements">
+            <summary>
+            This is used to specify the member explicitly implemented if applicable
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.PropertyTarget">
+            <summary>
+            This represents a property target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.PropertyTarget.Parameters">
+            <summary>
+            This read-only property returns an enumerable list of parameters if any
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.PropertyTarget.ReturnType">
+            <summary>
+            This read-only property returns the return type
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.PropertyTarget.#ctor(System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.Parameter},Sandcastle.Tools.BuildComponents.Targets.TypeReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="parameters">The property parameters</param>
+            <param name="returnType">The property return type</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.Reference">
+            <summary>
+            This is the base class for reference types
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.ReferenceTypeReference">
+            <summary>
+            This represents a reference type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.ReferenceTypeReference.ReferredToType">
+            <summary>
+            This read-only property returns the referred to type
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.ReferenceTypeReference.#ctor(Sandcastle.Tools.BuildComponents.Targets.TypeReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="referredToType">The referred to type</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SimpleMemberReference">
+            <summary>
+            This represents a simple member reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SimpleMemberReference.Id">
+            <summary>
+            This read-only property returns the member ID
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SimpleMemberReference.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">The member ID</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SimpleTypeReference">
+            <summary>
+            This represents a simple type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SimpleTypeReference.Id">
+            <summary>
+            This read-only property returns the type ID
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SimpleTypeReference.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="id">The type ID</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.Specialization">
+            <summary>
+            This represents a specialization
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Specialization.TemplateType">
+            <summary>
+            This read-only property returns the template type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Specialization.Arguments">
+            <summary>
+            This read-only property returns the arguments
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.Specialization.#ctor(Sandcastle.Tools.BuildComponents.Targets.SimpleTypeReference,System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.TypeReference})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="templateType">The template type</param>
+            <param name="arguments">The arguments</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberReference">
+            <summary>
+            This represents a specialized member reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberReference.TemplateMember">
+            <summary>
+            This read-only property returns the template member
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberReference.SpecializedType">
+            <summary>
+            This read-only property returns the specialized type
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberReference.#ctor(Sandcastle.Tools.BuildComponents.Targets.SimpleMemberReference,Sandcastle.Tools.BuildComponents.Targets.SpecializedTypeReference)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="templateMember">The template member</param>
+            <param name="specializedType">The specialized type</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberWithParametersReference">
+            <summary>
+            This represents a specialized member with parameters reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberWithParametersReference.Prefix">
+            <summary>
+            This read-only property returns the prefix
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberWithParametersReference.SpecializedType">
+            <summary>
+            This read-only property returns the specialized type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberWithParametersReference.MemberName">
+            <summary>
+            This read-only property returns the member name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberWithParametersReference.ParameterTypes">
+            <summary>
+            This read-only property returns the parameter types
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SpecializedMemberWithParametersReference.#ctor(System.String,Sandcastle.Tools.BuildComponents.Targets.SpecializedTypeReference,System.String,System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.TypeReference})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="prefix">The prefix</param>
+            <param name="specializedType">The specialized type</param>
+            <param name="memberName">The member name</param>
+            <param name="parameters">The parameters</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.SpecializedTypeReference">
+            <summary>
+            This represents a specialized type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedTypeReference.Specializations">
+            <summary>
+            This read-only property returns the specializations
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.SpecializedTypeReference.SpecializationDictionary">
+            <summary>
+            This read-only property is used to create and return a specialization dictionary
+            </summary>
+            <returns>The specialization dictionary</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.SpecializedTypeReference.#ctor(System.Collections.Generic.IList{Sandcastle.Tools.BuildComponents.Targets.Specialization})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="specializations">The specializations</param>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.Target">
+            <summary>
+            This is the base class for all other target types
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Target.Id">
+            <summary>
+            This is used to get or set the target's member ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Target.Container">
+            <summary>
+            This is used to get or set the target's container
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.Target.File">
+            <summary>
+            This is used to get or set the target's reference topic filename
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.Target.Add(System.Collections.Generic.IDictionary{System.String,Sandcastle.Tools.BuildComponents.Targets.Target})">
+            <summary>
+            Add the target to the given collection
+            </summary>
+            <param name="targets">The targets dictionary to which this target is added</param>
+            <remarks>This can be overridden to add dependent targets to the dictionary as well</remarks>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TemplateTypeReference">
+            <summary>
+            This is the base class for template type references
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TypeReference">
+            <summary>
+            This is the base type for type references
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TypeTarget">
+            <summary>
+            This represents a type target
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TypeTarget.Name">
+            <summary>
+            This is used to get or set the name
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TypeTarget.ContainingNamespace">
+            <summary>
+            This is used to get or set the containing namespace
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TypeTarget.ContainingType">
+            <summary>
+            This is used to get or set the containing type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TypeTarget.Templates">
+            <summary>
+            This is used to get or set the templates
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.Targets.TypeTemplateTypeReference">
+            <summary>
+            This represents a type template type reference
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TypeTemplateTypeReference.TemplateType">
+            <summary>
+            This read-only property returns the template type
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.Targets.TypeTemplateTypeReference.Position">
+            <summary>
+            This read-only property returns the position
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.Targets.TypeTemplateTypeReference.#ctor(Sandcastle.Tools.BuildComponents.Targets.SimpleTypeReference,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="templateType">The template type</param>
+            <param name="position">The position</param>
+        </member>
+    </members>
+</doc>

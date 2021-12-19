@@ -1,0 +1,689 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sandcastle.Tools.BuildComponents.UI</name>
+    </assembly>
+    <members>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg">
+            <summary>
+            This form is used to configure the settings for the Code Block Component
+            </summary>
+            <summary>
+            CodeBlockConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.Factory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.Factory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.btnSelectFolder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select the output folder for the IntelliSense files
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.SelectFile_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select one of the file types
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.CodeBlockConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg">
+            <summary>
+            This form is used to configure the ESENT Copy From Index component (Comments Index Data)
+            </summary>
+            <summary>
+            ESentCommentsIndexConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.CommentsIndexDataFactory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.CommentsIndexDataFactory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.ResolvePath(System.String)">
+            <summary>
+            Resolve the given path by replacing LocalDataFolder with the actual path and seeing if it exists
+            </summary>
+            <param name="path">The path to check</param>
+            <returns>The resolved path if it exists, or null if it does not</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.btnSelectCacheFolder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select a cache folder
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.chkEnableLocalCache_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable current project target caching
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.btnPurge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Purge the content ID and target cache folders
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentCommentsIndexConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg">
+            <summary>
+            This form is used to configure the ESENT Copy From Index component (Reflection Index Data)
+            </summary>
+            <summary>
+            ESentReflectionIndexConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.ReflectionIndexDataFactory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.ReflectionIndexDataFactory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.ResolvePath(System.String)">
+            <summary>
+            Resolve the given path by replacing LocalDataFolder with the actual path and seeing if it exists
+            </summary>
+            <param name="path">The path to check</param>
+            <returns>The resolved path if it exists, or null if it does not</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.btnSelectCacheFolder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select a cache folder
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.chkEnableLocalCache_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable current project target caching
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.btnPurge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Purge the content ID and target cache folders
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentReflectionIndexConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg">
+            <summary>
+            Interaction logic for ESentResolveReferenceLinksConfigDlg.xaml
+            </summary>
+            <summary>
+            ESentResolveReferenceLinksConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.Factory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.Factory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.ResolvePath(System.String)">
+            <summary>
+            Resolve the given path by replacing LocalDataFolder with the actual path and seeing if it exists
+            </summary>
+            <param name="path">The path to check</param>
+            <returns>The resolved path if it exists, or null if it does not</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.btnSelectCacheFolder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select a cache folder
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.chkEnableLocalCache_CheckedChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Enable or disable current project target caching
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.btnPurge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Purge the content ID and target cache folders
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.ESentResolveReferenceLinksConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg">
+            <summary>
+            This form is used to configure the settings for the IntelliSense component
+            </summary>
+            <summary>
+            IntelliSenseConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.Factory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.Factory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.btnSelectFolder_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Select the output folder for the IntelliSense files
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.IntelliSenseConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.Properties.Resources.CreateSandcastleDB">
+             <summary>
+               Looks up a localized string similar to -- NOTE: Change the file locations if necessary
+            CREATE DATABASE [Sandcastle]
+             ON  PRIMARY
+            ( NAME = N&apos;Sandcastle&apos;, FILENAME = N&apos;C:\Databases\Sandcastle.mdf&apos; )
+             LOG ON
+            ( NAME = N&apos;Sandcastle_log&apos;, FILENAME = N&apos;C:\Databases\Sandcastle_log.ldf&apos; )
+            GO
+            
+            USE [Sandcastle]
+            GO
+            
+            -- Member ID URLs table
+            CREATE TABLE [dbo].[MemberIdUrls](
+            	[TargetKey] [varchar](2048) NOT NULL,
+            	[MemberUrl] [varchar](2048) NULL,
+             CONSTRAINT [PK_MemberIdUrls] PRIMARY KEY CLUSTERED
+            (
+            	[TargetKey] ASC
+            ) ON [PRIMARY]
+            ) ON [P [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg">
+            <summary>
+            This form is used to define the SQL database connection string and create the database itself
+            </summary>
+            <summary>
+            SqlConnectionDlg
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg.ConnectionString">
+            <summary>
+            This is used to get or set the connection string
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg.ValidateConnectionString(System.String)">
+            <summary>
+            Validate the connection string
+            </summary>
+            <param name="connectionString">The connection string to test</param>
+            <returns>True if valid, false if not</returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg.btnSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save the changes
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg.btnCreate_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Create the database and its tables
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlConnectionDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg">
+            <summary>
+            Interaction logic for SqlCopyFromIndexConfigDlg.xaml
+            </summary>
+            <summary>
+            SqlCopyFromIndexConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.ReflectionIndexDataFactory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.ReflectionIndexDataFactory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.CommentsIndexDataFactory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.CommentsIndexDataFactory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.btnSetup_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Set the connection string
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.btnPurge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Purge the content ID and target cache tables
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlCopyFromIndexConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg">
+            <summary>
+            This form is used to configure the settings for the SQL Resolve Reference Links component
+            </summary>
+            <summary>
+            SqlResolveReferenceLinksConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.Factory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.Factory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.#ctor(System.Xml.Linq.XElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.btnSetup_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Set the connection string
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.btnPurge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Purge the content ID and target cache tables
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SqlResolveReferenceLinksConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg">
+            <summary>
+            This form is used to configure the syntax generators for the Syntax Component
+            </summary>
+            <summary>
+            SyntaxComponentConfigDlg
+            </summary>
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.Factory">
+            <summary>
+            This allows editing of the component configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.Factory.EditConfiguration(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.SyntaxGeneratorSettings">
+            <summary>
+            This is used to hold the syntax generator settings for the configuration dialog
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.SyntaxGeneratorSettings.Id">
+            <summary>
+            This is used to get or set the syntax generator ID
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.SyntaxGeneratorSettings.SortOrder">
+            <summary>
+            This is used to get or set the sort order
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.SyntaxGeneratorSettings.IsConfigurable">
+            <summary>
+            This is used to get or set whether or not the syntax generator is configurable
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.SyntaxGeneratorSettings.DefaultConfiguration">
+            <summary>
+            This is used to get or set the default configuration
+            </summary>
+        </member>
+        <member name="P:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.SyntaxGeneratorSettings.CurrentConfiguration">
+            <summary>
+            This is used to get or set the current configuration
+            </summary>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.#ctor(System.Xml.Linq.XElement,System.ComponentModel.Composition.Hosting.CompositionContainer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">The current configuration element</param>
+            <param name="container">The composition container user to locate the syntax generators</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.IsValid">
+            <summary>
+            This is used to determine whether or not the current configuration is valid and to store the changes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.btnHelp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            View help for this component
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.lbGenerators_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Validate and update the selected configuration when the selection changes
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.btnOK_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Validate the configuration and save it
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.lnkProjectSite_RequestNavigate(System.Object,System.Windows.Navigation.RequestNavigateEventArgs)">
+            <summary>
+            Go to the Sandcastle Help File Builder project site
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.btnReset_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Reset the configuration
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.btnMoveUp_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Move the selected syntax generator up in the sort order
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.btnMoveDown_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Move the selected syntax generator down in the sort order
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.chkAddNoExampleTabs_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Update the "include on standalone snippets" checkbox state
+            </summary>
+            <param name="sender">The sender of the event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="M:Sandcastle.Tools.BuildComponents.UI.SyntaxComponentConfigDlg.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
