@@ -1,7 +1,7 @@
 # Warrens_Flipchip_Tester
 C# GUI code to control Warren Stearn's FilpChip tester as modified for a SPI interface.
 
-The USB/SPI cable is an FTDI C232HM-DDHSL-0. Digi-Key, Farnell, and Mouser usually have lots of them in stock for about $25.
+The USB/SPI cable is an FTDI C232HM-DDHSL-0. Digi-Key, Farnell, and Mouser usually have lots of them in stock for about $40.
 You can find technical details on the USB/SPI cable here: http://www.ftdichip.com/Products/Cables/USBMPSSE.htm
 
 You must replace the standard Windows driver for the USB/SPI cable with the FTDI D2XX driver.
